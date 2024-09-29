@@ -14,17 +14,38 @@ const model = {
         isOpenMovie: false,
     },
     
-    
     input: {
+        register: {
+            userId: null,
+            userName: null,
+            password: null,
+            userImage: null,
+            comments: [], //reviews
+            friendComments: [],
+            friends: [],
+            favorites: [],
+            aboutme: null
+        },
+        profile: {
+            selectedUser: null,
+            profileBox: null,
+            showProfile: null
+        },
         moviePage: {
             inputRating: 0,
             selectedNumber: 0,
             inputComment: null,
-            averageRating: null
+            averageRating: null,
+            showMovie: null
         },
-
+        category: {
+            categorySort: null,
+            selectedCategory: null,
+            showCategory: null,
+        },
         search: {
-            inputSearch: null
+            inputSearch: null,
+            showSearch: null
         },
 
         addMovies: {
@@ -45,18 +66,40 @@ const model = {
     data: {
         users: [
             {
+                userId: 1,
                 userName: "Chris",
                 password: "chris123",
+                userImage: "/IMG/users/chris.jpg",
                 comments: [],
                 isAdmin: true,
-                ratings: []
+                friendComments: [],
+                friends: [],
+                favorites: [],
+                aboutme: "hei, jeg heter Christoffer og er 37 år fra Larvik"
             },
             {
+                userId: 9571,
                 userName: "FilmFan16",
                 password: "film123",
+                userImage: "/IMG/users/filmfan16.jpg",
                 comments: [],
                 isAdmin: false,
-                ratings: []
+                friendComments: [],
+                friends: [],
+                favorites: [],
+                aboutme: "Hei jeg heter Frank-Remi og er 44 år, ugift fra Halden. Liker ofte og dra på Sverigeturer og handle databrus og bacon sammen med mamma. Har en liten drøm om å bli nr 1 i norge på Dungeons & Dragons."
+            },
+            {
+                userId: 2,
+                userName: "Nico",
+                password: "nico123",
+                userImage: "/IMG/users/nico.png",
+                comments: [],
+                isAdmin: true,
+                friendComments: [],
+                friends: [],
+                favorites: [],
+                aboutme: "Hei, jeg heter Nicolai. 31 år fra Moss",
             },
 
         ],
@@ -105,8 +148,11 @@ const model = {
                 year: 2008,
                 comments: [
                     {
-                        userName: "FilmFan16",
-                        comment: "Var ganske bra, bortsett fra den klovnen. Forsto ikke hvorfor han var med?"
+                        date: "28.9.2024",
+                        time: "20.19.06",
+                        userName: "FilmFan16", 
+                        comment: "Var ganske bra, bortsett fra den klovnen. Forsto ikke hvorfor han var med?",
+                        rating: "930"
                     }
                 ],
                 description: "When the menace known as the Joker emerges from his mysterious past, he wreaks havoc and chaos on the people of Gotham."
