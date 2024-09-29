@@ -94,12 +94,30 @@ const model = {
                 userName: "Nico",
                 password: "nico123",
                 userImage: "/IMG/users/nico.png",
-                comments: [],
+                comments: [{
+                    comment: "Det var en god en",
+                    date: "29.9.2024",
+                    movie: "The Dark Knight",
+                    rating: 900,
+                    time: "22:03:06" 
+                 }],
                 isAdmin: true,
                 friendComments: [],
-                friends: [],
-                favorites: [],
+                friends: ['Chris'],
+                favorites: ["The Shawshank Redemption"],
                 aboutme: "Hei, jeg heter Nicolai. 31 år fra Moss",
+            },
+            {
+                userId: 9588,
+                userName: "InternalLocusOfControl",
+                password: "Modal123",
+                userImage: "IMG/InternalLocus.jpg",
+                comments: [],
+                isAdmin: false,
+                friendComments: [],
+                friends: ['Filmfan16'],
+                favorites: [],
+                aboutme: "Hei, eg heitar Knut og har et ønskje om å bli marinejegar."
             },
 
         ],
@@ -153,7 +171,15 @@ const model = {
                         userName: "FilmFan16", 
                         comment: "Var ganske bra, bortsett fra den klovnen. Forsto ikke hvorfor han var med?",
                         rating: "930"
-                    }
+                    },
+                    {
+                        comment: "Det var en god en",
+                        userName: "Nico",
+                        date: "29.9.2024",
+                        movie: "The Dark Knight",
+                        rating: 900,
+                        time: "22:03:06" 
+                     }
                 ],
                 description: "When the menace known as the Joker emerges from his mysterious past, he wreaks havoc and chaos on the people of Gotham."
             },

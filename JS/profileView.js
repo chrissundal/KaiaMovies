@@ -23,6 +23,7 @@ function updateProfilView(){
         </div>
     </div>
     <div class="commentaryInput">
+        <h3>Tidligere Kommentarer<h3>
         <div>${createComments()}</div>
     </div>
 
@@ -32,17 +33,35 @@ function updateProfilView(){
 }
 function createComments(){
     let html = '';
-    for(let index = 0; index <model.data.users[0].comments.length; index++) {
+    for(let index = 0; index <model.data.users[2].comments.length; index++) {
         html += /*HTML*/`
       <ul>
-        <div>${model.data.users[0].comments[index].movie}</div>   
-        <div>${model.data.users[0].comments[index].rating}</div>
-        <div>${model.data.users[0].comments[index].comment}</div>
-        <div>${model.data.users[0].comments[index].date}
-        ${model.data.users[0].comments[index].time}
+        <div>${model.data.users[2].comments[index].movie}</div>   
+        <div>${model.data.users[2].comments[index].rating}</div>
+        <div>${model.data.users[2].comments[index].comment}</div>
+        <div>${model.data.users[2].comments[index].date}
+        ${model.data.users[2].comments[index].time}
         </div>
         </ul>
         `;
     }
     return html;
+}
+
+function createFriendList(){
+let html= '';
+for(let index = 0; index <model.data.users[2].friends.length;index++){
+    html += /*HTML*/ `
+    <div>${model.data.users[2].friends[index]}</div>`
+}
+return html;
+}
+
+function createFavoriteList(){
+let html = '';
+for(let index=0; index<model.data.users[2].favorites.length; index++){
+    html += /*HTML*/`
+    <div>${model.data.users[2].favorites[index]}`
+}
+return html;
 }
