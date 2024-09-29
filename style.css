@@ -1,0 +1,278 @@
+body {
+    background-color: black;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    color: white;
+}
+button {
+    cursor: pointer;
+    width: 70px;
+    height: 40px;
+    border-radius: 10px;
+    background-color: white;
+    border: none;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    transition: 0.3s ease;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-size: large;
+}
+button:hover {
+    transform: scale(1.05);
+}
+/*header*/
+.header {
+    background-color: #333;
+    padding: 10px;
+    text-align: center;
+    height: 70px;
+    margin-left: 5px;
+}
+.header img{
+    transition: 0.3s ease;
+}
+.header img:hover {
+    transform: scale(1.05);
+    cursor: pointer;
+}
+.homeIcon {
+    position: absolute;
+    top: 12px;
+    left: 20px;
+    transition: 0.3s ease;
+}
+.homeIcon:hover {
+    transform: scale(1.05);
+    cursor: pointer;
+}
+/*dropdown*/
+.movieDropBtn {
+    position: absolute;
+    z-index: 3;
+    top: 15px;
+    right: 130px;
+    width: 80px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: 0.3s ease;
+}
+.movieDropBtn:hover {
+    cursor: pointer;
+    transform: scale(1.05);
+}
+.profileDropBtn {
+    position: absolute;
+    z-index: 3;
+    top: 22px;
+    right: 30px;
+    width: 80px;
+    height: 60px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: 0.3s ease;
+}
+.profileDropBtn:hover {
+    cursor: pointer;
+    transform: scale(1.05);
+}
+.dropDownMovie {
+    position: absolute;
+    z-index: 3;
+    top: 100px;
+    right: 8px;
+    background-color: #333;
+    border-radius: 0 0 5px 5px;
+    box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.1);
+    width: 150px;
+    height: 180px;
+    padding: 10px;
+    text-shadow: 2px 2px 5px red;
+}
+.dropDownMovie button {
+    margin-top: 30px;
+    width: 100px;
+    height: 25px;
+    border-radius: 10px;
+    
+}
+.main {
+    font-size: x-large;
+    text-align: center;
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+}
+.innerDrop {
+    transition: 0.3s ease;
+    border-radius: 10px;
+    border: 2px solid white;
+    padding: 5px;
+    width: 120px;
+    margin: 10px;
+    cursor: pointer;
+    transition: 0.3s ease;
+}
+.innerDrop:hover{
+    transform: scale(1.05);
+}
+.innerDropClose {
+    cursor: pointer;
+    transition: 0.3s ease;
+    border-radius: 10px;
+    border: 2px solid white;
+    padding: 5px;
+    width: 60px;
+    height: 20px;
+    margin-top: 20px;
+    align-items: center;
+    font-size: medium;
+    transition: 0.3s ease;
+}
+.innerDropClose:hover {
+    transform: scale(1.05);
+}
+/*forside filmer*/
+.movieGrid{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    width: 100%;
+    
+    justify-items: center;
+    margin: 10px;
+    gap: 50px;
+}
+.movieBox {
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    border: 2px solid white;
+    width: 220px;
+    height: 240px;
+    border-radius: 10px;
+    margin: 10px;
+    transition: 0.3s ease;
+}
+.movieRating {
+    margin-top: 10px;
+    position: relative;
+    right: 80px;
+    color: #d4af37;
+    font-size: large;
+}
+.movieText {
+    height: 40px;
+    text-align: center;
+}
+/*Movie side*/
+.mainFullMovie {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 10px;
+    gap: 10px;
+}
+.movieFullHeader {
+    text-align: center;
+    font-size: 50px;
+}
+.movieFullDescription {
+    border: 1px solid white;
+    border-radius: 10px;
+    height: 70px;
+    text-align: center;
+    padding: 10px;
+    margin-top: 50px;
+}
+
+.movieFullFacts{
+    position: absolute;
+    left: 10px;
+    top: 210px;
+    border: 1px solid white;
+    border-radius: 10px;
+    margin: 10px;
+    height: 500px;
+    padding: 10px;
+    line-height: 2;
+}
+.movieFullIcons{
+    margin: 10px;
+    
+}
+.movieFullIcons img{
+    cursor: pointer;
+    margin: 0 40px 0 40px;
+    transition: 0.3s ease;
+}
+.movieFullIcons img:hover{
+    transform: scale(1.05);
+}
+.movieFullComment{
+    position: absolute;
+    right: 0px;
+    z-index: 1;
+    top: 210px;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid white;
+    border-radius: 10px 0 0 10px;
+    margin: 10px;
+    max-height: 500px;
+    overflow-y: auto;
+    overflow-x: hidden;
+    width: 400px;
+    padding: 10px;
+    line-height: 2;
+}
+.movieFullComment button{
+    position: absolute;
+    right: 10px;
+    top: 10px;
+}
+.movieFullCommentFrame{
+    border: 1px solid white;
+    border-radius: 10px;
+    width: 300px;
+    
+    margin: 5px;
+    padding: 5px;
+}
+.movieFullCommentInput{
+    position: absolute;
+    right: 0px;
+    z-index: 1;
+    top: 120px;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid white;
+    border-radius: 10px 0 0 10px;
+    margin: 10px;
+    width: 400px;
+    padding: 10px;
+    
+}
+.movieFullCommentInput input[type="number"] {
+    width: 70px;
+    font-size: large;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+.movieFullCommentInput input[type="text"] {
+    width: 340px;
+    font-size: large;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+.movieFullCommentInput button{
+    position: absolute;
+    right: 5px;
+    top: 49px;
+    border-radius: 0px;
+    width: 50px;
+    height: 25px;
+}

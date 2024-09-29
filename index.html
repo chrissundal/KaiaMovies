@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+
+    </style>
+</head>
+<body onload="changeView()">
+    <div id="app"></div>
+    <script>
+       
+        function changeView(){
+            if (model.app.currentPage == 'startPage') {
+                updateMainView()
+                console.log("start")
+            }
+            else if (model.app.currentPage == 'categoryPage') {
+                updateCategoryView()
+                console.log("category")
+            }
+            else if (model.app.currentPage == 'searchPage') {
+                updateSearchView();
+                console.log("search")
+            }
+            else if (model.app.currentPage == 'profilPage') {
+                updateProfilView();
+                console.log("profile")
+            }
+            else if (model.app.currentPage == 'moviePage') {
+                updateMovieView();
+                
+                console.log("movie")
+            }
+            else if (model.app.currentPage == 'loginPage') {
+                updateLoginView();
+                
+                console.log("login")
+            }
+        }
+     </script>
+    <script src="JS/model.js"></script>
+    <script src="JS/common.js"></script>
+    <script src="JS/mainController.js"></script>
+    <script src="JS/movieController.js"></script>
+    <script src="JS/loginController.js"></script>
+    <script src="JS/searchController.js"></script>
+    <script src="JS/categoryController.js"></script>
+    <script src="JS/profileController.js"></script>
+    <script src="JS/mainView.js"></script>
+    <script src="JS/categoryView.js"></script>
+    <script src="JS/loginView.js"></script>
+    <script src="JS/movieView.js"></script>
+    <script src="JS/searchView.js"></script>
+    <script src="JS/profileView.js"></script>
+</body>
+</html>
