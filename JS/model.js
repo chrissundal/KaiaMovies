@@ -10,7 +10,7 @@ const model = {
             'moviePage',
             'loginPage'
         ],
-        currentPage: 'startPage',
+        currentPage: 'categoryPage',
         isOpenMovie: false,
     },
     

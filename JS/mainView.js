@@ -4,9 +4,11 @@ function updateMainView(){
     <div class="container">
         ${createHeader()}
         ${createDropdownMovie()}
-        <div class="profileDropBtn" onclick=""><img src="IMG/profile.png" height = 60px></div>
-    </div>
-    
+        <div class="profileDropBtn" onclick="goProfile()"><img src="IMG/profile.png" height = 60px></div>
+        </div>
+        <div class="mainGridrec">
+        ${createMainMovieList()}
+        </div>
     `;
     appDiv.innerHTML = startPage;
 }
@@ -34,19 +36,28 @@ function createDropdownMovie(){
     </div>
     `;
 }
-function createMainMovieList(){
+function createMainMovieList() {
     let html = '';
-     
-    for(let index = 0; index < model.data.movies.length; index++) {
-        html += `
-        <div class="movieBox" onclick="goMovie(${index})">
-        <div class="movieRating">${model.data.movies[index].avgRating}</div>
-        <br>
-        <img src="${model.data.movies[index].movieImage}" height = 130px width = 90px/>
-        <br>
-        <div class="movieText">${model.data.movies[index].name}</div>
-        </div>
-        `;
+    let randomNumberMain = 0;
+    let count = 0;
+    let addedMovies = new Set();
+    
+    while (count < 4) {
+        randomNumberMain = Math.floor(Math.random() * model.data.movies.length);
+        if (model.data.movies[randomNumberMain].avgRating > 860 && !addedMovies.has(randomNumberMain)) {
+            console.log(randomNumberMain);
+            html += `
+            <div class="movieBox" onclick="goMovie(${randomNumberMain})">
+                <div class="movieRating">${model.data.movies[randomNumberMain].avgRating}</div>
+                <br>
+                <img src="${model.data.movies[randomNumberMain].movieImage}" height="130px" width="90px"/>
+                <br>
+                <div class="movieText">${model.data.movies[randomNumberMain].name}</div>
+            </div>
+            `;
+            addedMovies.add(randomNumberMain);
+            count++;
+        }
     }
     return html;
 }
