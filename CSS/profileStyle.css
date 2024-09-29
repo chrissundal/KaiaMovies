@@ -1,29 +1,24 @@
 .userProfile{
-    height: 400px;
-    width: 400px;
+    
     background-color: antiquewhite;
 }
 
 .innerProfile{
-    height: 200px;
-    width: 200px;
+   
     background-color: rgb(185, 119, 33);
 }
 
 .friends-favoritesList{
-    height: 200px;
-    width: 200px;
+    
     background-color: rgb(44, 89, 46);
 }
 
 .friendsList{
-    height: 100px;
-    width: 100px;
+    
     background-color: rgb(238, 206, 0);
 }
 
 .commentaryInput{
-    height: 100px;
-    width: 100px;
+    
     background-color: rgb(4, 0, 238);
 }
