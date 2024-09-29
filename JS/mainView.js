@@ -18,14 +18,12 @@ function createHeader(){
     <div class="header" onclick="goHomeButton()">
             <img src="IMG/kaiamovies.png" height = 80px>
         </div>
-        <div class="homeIcon" onclick="history.back()">
-            <img src="IMG/back.png" height = 80px>
-        </div>
+        
     `;
     return html;
 }
 function createDropdownMovie(){
-    if (model.app.isOpenMovie == false) return `<div class="movieDropBtn" onmouseover="openDropdownMovie()"><img src="IMG/search.png" height = 80px></div>`;
+    if (model.app.isOpenMovie == false) return `<div class="movieDropBtn" onclick="openDropdownMovie()"><img src="IMG/search.png" height = 80px></div>`;
     return `
     <div class="dropDownMovie">
     <div class="main">
@@ -38,14 +36,14 @@ function createDropdownMovie(){
 }
 function createMainMovieList() {
     let html = '';
-    let randomNumberMain = 0;
     let count = 0;
     let addedMovies = new Set();
+    let randomNumberMain = 0;
+    
     
     while (count < 4) {
         randomNumberMain = Math.floor(Math.random() * model.data.movies.length);
         if (model.data.movies[randomNumberMain].avgRating > 860 && !addedMovies.has(randomNumberMain)) {
-            console.log(randomNumberMain);
             html += `
             <div class="movieBox" onclick="goMovie(${randomNumberMain})">
                 <div class="movieRating">${model.data.movies[randomNumberMain].avgRating}</div>

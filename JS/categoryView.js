@@ -5,14 +5,10 @@ function updateCategoryView(){
         ${createHeader()}
         ${createDropdownMovie()}
         <div class="profileDropBtn" onclick="goProfile()"><img src="IMG/profile.png" height = 60px></div>
-       <div style="color: white">category</div>
     </div>
-    <div class="categorySortRating">
+    <div class="categorySort">
         <button class="sortButton" onclick="sortMovies('rating')">Rating</button>
-    <div class="categorySortYear">
         <button class="sortButton" onclick="sortMovies('year')">Year</button>
-    </div>
-    <div class="categorySortComment">
         <button class="sortButton" onclick="sortMovies('comments')">Comments</button>
     </div>
     <div class="movieGrid">

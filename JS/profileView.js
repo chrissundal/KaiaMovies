@@ -9,16 +9,16 @@ function updateProfilView(){
     </div>
     <div class="userProfile">
     <div class="innerProfile">
-        <div><img src="${model.data.users[2].userImage}" height = 250px width = 400px></div>
-        <div>${model.data.users[2].aboutme}></div>
+        <div><img src="${model.data.users[0].userImage}" height = 250px width = 400px></div>
+        <div>${model.data.users[0].aboutme}></div>
         <div class="friends-favoritesList">
             <div class="friendList">
             <h3>Friends</h3>
-            <div>${model.data.users[2].friends}</div>
+            <div>${model.data.users[0].friends}</div>
             </div>
             <div class="favoritesList">
             <h3>Favorites</h3>
-            <div>${model.data.users[2].favorites}</div>
+            <div>${model.data.users[0].favorites}</div>
             </div>
         </div>
     </div>

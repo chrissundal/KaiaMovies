@@ -20,7 +20,12 @@
     border-radius: 10px;
     margin: 10px;
     transition: 0.3s ease;
-    background-color: black;
+    background-color: #333333cc;
+    box-shadow: 5px 5px 10px #333;
+    transition: 0.3s ease;
+}
+.movieBox:hover {
+    transform: scale(1.05);
 }
 .movieRating {
     margin-top: 10px;
@@ -37,11 +42,12 @@
     padding: 10px;
     margin: 5px;
     cursor: pointer;
-    background-color: #007BFF;
+    background-color: #333;
     color: white;
     border: none;
     border-radius: 5px;
+    width: 110px;
 }
 .sortButton:hover {
-    background-color: #0056b3;
+    background-color: #292929;
 }

@@ -2,8 +2,9 @@ body {
     background-color: black;
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
     color: white;
-    background: url(IMG/banner.png);
-    background-size: cover
+    background: url(IMG/banner2.png);
+    background-size: 100%;
+   
 }
 button {
     cursor: pointer;
@@ -140,4 +141,5 @@ button:hover {
     flex-wrap: wrap;
     justify-content: center;
     margin-top: 550px;
+    gap: 50px;
 }
