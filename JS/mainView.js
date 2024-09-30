@@ -11,7 +11,9 @@ function updateMainView(){
         </div>
     `;
     appDiv.innerHTML = startPage;
+    model.input.profile.selectedUser = 0;
 }
+
 function createHeader(){
     let html = '';
     html = `

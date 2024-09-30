@@ -13,33 +13,24 @@
 <body onload="changeView()">
     <div id="app"></div>
     <script>
-       
         function changeView(){
             if (model.app.currentPage == 'startPage') {
                 updateMainView()
-                console.log("start")
             }
             else if (model.app.currentPage == 'categoryPage') {
                 updateCategoryView()
-                console.log("category")
             }
             else if (model.app.currentPage == 'searchPage') {
                 updateSearchView();
-                console.log("search")
             }
             else if (model.app.currentPage == 'profilPage') {
                 updateProfilView();
-                console.log("profile")
             }
             else if (model.app.currentPage == 'moviePage') {
                 updateMovieView();
-                
-                console.log("movie")
             }
             else if (model.app.currentPage == 'loginPage') {
                 updateLoginView();
-                
-                console.log("login")
             }
         }
      </script>

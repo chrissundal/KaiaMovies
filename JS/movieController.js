@@ -10,21 +10,20 @@ function sendMovieRating(){
     let thisTime = new Date().toLocaleTimeString()
     model.data.movies[`${model.input.moviePage.selectedNumber}`].rating.push(inputRating)
     let inputComment = model.input.moviePage.inputComment;
-    console.log(inputComment)
     model.data.movies[`${model.input.moviePage.selectedNumber}`].comments.push(
         {
         date: thisDate,
         time: thisTime,
-        userName: model.data.users[0].userName,
+        userName: model.data.users[model.input.profile.selectedUser].userName,
         comment: inputComment,
         rating: inputRating
         }
         )
-    model.data.users[0].comments.push(
+    model.data.users[model.input.profile.selectedUser].comments.push(
         {
         date: thisDate,
         time: thisTime,
-        movie: model.data.movies[`${model.input.moviePage.selectedNumber}`].name,
+        movie: model.data.movies[model.input.moviePage.selectedNumber].name,
         comment: inputComment,
         rating: inputRating
         }
