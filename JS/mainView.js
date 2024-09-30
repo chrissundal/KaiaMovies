@@ -1,5 +1,5 @@
 updateMainView();
-function updateMainView(){
+function updateMainView() {
     startPage = /*HTML*/`
     <div class="container">
         ${createHeader()}
@@ -14,17 +14,16 @@ function updateMainView(){
     model.input.profile.selectedUser = 0;
 }
 
-function createHeader(){
+function createHeader() {
     let html = '';
     html = `
     <div class="header" onclick="goHomeButton()">
             <img src="IMG/kaiamovies.png" height = 80px>
         </div>
-        
     `;
     return html;
 }
-function createDropdownMovie(){
+function createDropdownMovie() {
     if (model.app.isOpenMovie == false) return `<div class="movieDropBtn" onclick="openDropdownMovie()"><img src="IMG/search.png" height = 80px></div>`;
     return `
     <div class="dropDownMovie">
@@ -41,21 +40,21 @@ function createMainMovieList() {
     let count = 0;
     let addedMovies = new Set();
     let randomNumberMain = 0;
-    
-    
+
     while (count < 4) {
         randomNumberMain = Math.floor(Math.random() * model.data.movies.length);
-        if (model.data.movies[randomNumberMain].avgRating > 860 && !addedMovies.has(randomNumberMain)) {
+        const movie = model.data.movies[randomNumberMain];
+        if (movie.avgRating > 860 && !addedMovies.has(movie.name)) {
             html += `
-            <div class="movieBox" onclick="goMovie(${randomNumberMain})">
-                <div class="movieRating">${model.data.movies[randomNumberMain].avgRating}</div>
+            <div class="movieBox" onclick="goMovie('${movie.name}')">
+                <div class="movieRating">${movie.avgRating}</div>
                 <br>
-                <img src="${model.data.movies[randomNumberMain].movieImage}" height="130px" width="90px"/>
+                <img src="${movie.movieImage}" height="130px" width="90px"/>
                 <br>
-                <div class="movieText">${model.data.movies[randomNumberMain].name}</div>
+                <div class="movieText">${movie.name}</div>
             </div>
             `;
-            addedMovies.add(randomNumberMain);
+            addedMovies.add(movie.name);
             count++;
         }
     }

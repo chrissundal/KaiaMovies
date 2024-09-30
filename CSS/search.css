@@ -1,0 +1,89 @@
+table {
+    width: 80%;
+    border-collapse: collapse;
+    margin: 20px 0;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    background-color: #333333cc;
+    max-height: 500px;
+}
+
+th,
+td {
+    padding: 12px;
+    text-align: center;
+    border-bottom: 1px solid #ddd;
+}
+
+th {
+    background-color: #4CAF50;
+    color: white;
+}
+
+tr:hover {
+    background-color: #f1f1f1;
+    color: #333;
+}
+
+.header {
+    font-size: 18px;
+    text-align: center;
+}
+
+.searchPageText,
+.searchPageRating,
+.searchPageYear {
+    font-size: 16px;
+}
+
+.movieBox img {
+    border-radius: 5px;
+}
+
+.searchTable {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+
+}
+
+.input-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 10px;
+}
+
+.input-container input[type="text"] {
+    padding: 10px;
+    font-size: 16px;
+    border: 2px solid #ccc;
+    border-radius: 5px 0 0 5px;
+    outline: none;
+    transition: border-color 0.3s;
+}
+
+.input-container input[type="text"]:focus {
+    border-color: #333;
+}
+
+.input-container button {
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    padding: 10px 20px;
+    font-size: 16px;
+    border: 2px solid #333;
+    border-left: none;
+    background-color: #333;
+    color: white;
+    border-radius: 0 5px 5px 0;
+    cursor: pointer;
+    outline: none;
+    text-align: center;
+    width: auto;
+    transition: 0.3s ease;
+}
+
+.input-container button:hover {
+    background-color: #292929;
+    border-color: #292929;
+    text-shadow: 2px 2px 5px red;
+}

@@ -2,10 +2,10 @@ body {
     background-color: black;
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
     color: white;
-    background: url(IMG/banner2.png);
-    background-size: 100%;
-   
+    background: url(IMG/banner2.jpg);
+    background-size:100%;
 }
+
 button {
     cursor: pointer;
     width: 70px;
@@ -20,9 +20,11 @@ button {
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
     font-size: large;
 }
+
 button:hover {
     transform: scale(1.05);
 }
+
 /*header*/
 .header {
     background-color: #333;
@@ -31,23 +33,28 @@ button:hover {
     height: 70px;
     margin-left: 5px;
 }
-.header img{
+
+.header img {
     transition: 0.3s ease;
 }
+
 .header img:hover {
     transform: scale(1.05);
     cursor: pointer;
 }
+
 .homeIcon {
     position: absolute;
     top: 12px;
     left: 20px;
     transition: 0.3s ease;
 }
+
 .homeIcon:hover {
     transform: scale(1.05);
     cursor: pointer;
 }
+
 /*dropdown*/
 .movieDropBtn {
     position: absolute;
@@ -60,10 +67,12 @@ button:hover {
     align-items: center;
     transition: 0.3s ease;
 }
+
 .movieDropBtn:hover {
     cursor: pointer;
     transform: scale(1.05);
 }
+
 .profileDropBtn {
     position: absolute;
     z-index: 3;
@@ -76,10 +85,12 @@ button:hover {
     align-items: center;
     transition: 0.3s ease;
 }
+
 .profileDropBtn:hover {
     cursor: pointer;
     transform: scale(1.05);
 }
+
 .dropDownMovie {
     position: absolute;
     z-index: 3;
@@ -93,13 +104,15 @@ button:hover {
     padding: 10px;
     text-shadow: 2px 2px 5px red;
 }
+
 .dropDownMovie button {
     margin-top: 30px;
     width: 100px;
     height: 25px;
     border-radius: 10px;
-    
+
 }
+
 .main {
     font-size: x-large;
     text-align: center;
@@ -107,6 +120,7 @@ button:hover {
     display: flex;
     flex-direction: column;
 }
+
 .innerDrop {
     transition: 0.3s ease;
     border-radius: 10px;
@@ -117,9 +131,11 @@ button:hover {
     cursor: pointer;
     transition: 0.3s ease;
 }
-.innerDrop:hover{
+
+.innerDrop:hover {
     transform: scale(1.05);
 }
+
 .innerDropClose {
     cursor: pointer;
     transition: 0.3s ease;
@@ -133,9 +149,11 @@ button:hover {
     font-size: medium;
     transition: 0.3s ease;
 }
+
 .innerDropClose:hover {
     transform: scale(1.05);
 }
+
 .mainGridrec {
     display: flex;
     flex-wrap: wrap;

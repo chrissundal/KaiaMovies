@@ -44,8 +44,9 @@ const model = {
             showCategory: null,
         },
         search: {
-            inputSearch: null,
-            showSearch: null
+            inputSearch: '',
+            showSearch: [],
+            searchResults: '',
         },
 
         addMovies: {
@@ -61,7 +62,6 @@ const model = {
             description: null
         }
     },
-
 
     data: {
         users: [

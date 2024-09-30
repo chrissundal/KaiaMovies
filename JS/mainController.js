@@ -3,4 +3,3 @@ function goHomeButton(){
     model.app.isOpenMovie = false;
     changeView()
 }
-

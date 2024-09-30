@@ -1,6 +1,11 @@
-function goMovie(index){
-    model.app.currentPage = model.app.pages[4]
-    model.input.moviePage.selectedNumber = index
+function goMovie(movieName){
+    model.app.currentPage = model.app.pages[4];
+    const selectedMovie = model.data.movies.find(movie => movie.name === movieName);
+    if (selectedMovie) {
+        model.input.moviePage.selectedNumber = model.data.movies.indexOf(selectedMovie);
+    } else {
+        console.error('Movie not found');
+    }
     model.app.isOpenMovie = false;
     updateMovieView();
 }
