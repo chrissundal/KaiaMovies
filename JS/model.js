@@ -8,9 +8,10 @@ const model = {
             'categoryPage',
             'profilPage',
             'moviePage',
-            'loginPage'
+            'loginPage',
+            'friendPage'
         ],
-        currentPage: 'loginPage',
+        currentPage: 'friendPage',
         isOpenMovie: false,
     },
     

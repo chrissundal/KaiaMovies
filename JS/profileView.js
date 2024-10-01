@@ -5,7 +5,6 @@ function updateProfilView() {
         ${createHeader()}
         ${createDropdownMovie()}
         <div class="profileDropBtn" onclick="goProfile()"><img src="IMG/profile.png" height = 60px></div>
-       <div style="color: white">Profil</div>
     </div>
     <div class="userProfile">
     <div class="innerProfile">
@@ -21,7 +20,7 @@ function updateProfilView() {
             <h3>Friends</h3>
             <div class="friendList">${createFriendList()}</div>
             <div class="addFriend">
-            <input type="text" placeholder="Add a friend" onchange="updateFriendInput(this)" />
+            <input type="text" placeholder="Add a friend" oninput="updateFriendInput(this)" />
             <button onclick="addFriend(this.previousElementSibling)">Add Friend</button>
         </div>
             </div>
