@@ -12,7 +12,6 @@ function updateMainView() {
         </div>
     `;
     appDiv.innerHTML = startPage;
-    
 }
 
 function createHeader() {
