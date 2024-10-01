@@ -24,7 +24,7 @@ function createMovieInfo() {
             <br>
             <img src="${selectedMovie.movieImage}" height = 400px width = 300px/>
             <br>
-            <div class="movieFullIcons">
+            <div class="movieFullIcons" onclick="addToFavorite()">
                 <img src="IMG/heart.png" height = 50px/>
             </div>
             <div class="movieFullDescription">${selectedMovie.description}</div>

@@ -3,8 +3,6 @@ function goMovie(movieName){
     const selectedMovie = model.data.movies.find(movie => movie.name === movieName);
     if (selectedMovie) {
         model.input.moviePage.selectedNumber = model.data.movies.indexOf(selectedMovie);
-    } else {
-        console.error('Movie not found');
     }
     model.app.isOpenMovie = false;
     updateMovieView();
@@ -13,9 +11,9 @@ function sendMovieRating(){
     let inputRating = model.input.moviePage.inputRating;
     let thisDate = new Date().toLocaleDateString()
     let thisTime = new Date().toLocaleTimeString()
-    model.data.movies[`${model.input.moviePage.selectedNumber}`].rating.push(inputRating)
+    model.data.movies[model.input.moviePage.selectedNumber].rating.push(inputRating)
     let inputComment = model.input.moviePage.inputComment;
-    model.data.movies[`${model.input.moviePage.selectedNumber}`].comments.push(
+    model.data.movies[model.input.moviePage.selectedNumber].comments.push(
         {
         date: thisDate,
         time: thisTime,
@@ -38,4 +36,7 @@ function sendMovieRating(){
     calculateRating();
     updateMovieView();
 }
-
+function addToFavorite() {
+    model.data.users[model.input.profile.selectedUser].favorites.push(model.data.movies[model.input.moviePage.selectedNumber].name)
+    updateMovieView();
+}
