@@ -1,5 +1,6 @@
 function goSearch() {
     model.app.currentPage = model.app.pages[1]
+    model.app.isOpenMovie = false;
     changeView()
 }
 function searchPageResult() {
