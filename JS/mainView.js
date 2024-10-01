@@ -6,12 +6,13 @@ function updateMainView() {
         ${createDropdownMovie()}
         <div class="profileDropBtn" onclick="goProfile()"><img src="IMG/profile.png" height = 60px></div>
         </div>
+        <div class="mainStartText">Hei ${model.input.login.userName}</div>
         <div class="mainGridrec">
         ${createMainMovieList()}
         </div>
     `;
     appDiv.innerHTML = startPage;
-    model.input.profile.selectedUser = 0;
+    
 }
 
 function createHeader() {

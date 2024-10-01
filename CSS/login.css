@@ -1,0 +1,23 @@
+.mainloginBox{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+.loginBox {
+    display: flex;
+background-color: blueviolet;
+    flex-direction: column;
+    margin: 10px;
+    gap: 10px;
+    align-items: center;
+    margin-top: 300px;
+    padding: 20px;
+    border-radius: 10px;
+
+}
+.loginBox button {
+    width: auto;
+}
+.loginBox input {
+    font-size: larger;
+}

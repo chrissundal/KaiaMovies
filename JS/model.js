@@ -10,7 +10,7 @@ const model = {
             'moviePage',
             'loginPage'
         ],
-        currentPage: 'startPage',
+        currentPage: 'loginPage',
         isOpenMovie: false,
     },
     
@@ -27,9 +27,15 @@ const model = {
             aboutme: null
         },
         profile: {
-            selectedUser: null,
+            selectedUser: 0,
             profileBox: null,
             showProfile: null
+        },
+        login: {
+            userId: '',
+            userName: null,
+            password: null,
+            showLogin: ''
         },
         moviePage: {
             inputRating: 0,
@@ -66,7 +72,7 @@ const model = {
     data: {
         users: [
             {
-                userId: 1,
+                userId: 0,
                 userName: "Chris",
                 password: "chris123",
                 userImage: "/IMG/users/chris.jpg",
@@ -78,7 +84,7 @@ const model = {
                 aboutme: "hei, jeg heter Christoffer og er 37 år fra Larvik"
             },
             {
-                userId: 9571,
+                userId: 1,
                 userName: "FilmFan16",
                 password: "film123",
                 userImage: "/IMG/users/filmfan16.jpg",
@@ -108,7 +114,7 @@ const model = {
                 aboutme: "Hei, jeg heter Nicolai. 31 år fra Moss",
             },
             {
-                userId: 9588,
+                userId: 3,
                 userName: "InternalLocusOfControl",
                 password: "Modal123",
                 userImage: "IMG/InternalLocus.jpg",
