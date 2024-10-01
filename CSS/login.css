@@ -5,7 +5,7 @@
 }
 .loginBox {
     display: flex;
-background-color: blueviolet;
+background-color: #333333cc;
     flex-direction: column;
     margin: 10px;
     gap: 10px;

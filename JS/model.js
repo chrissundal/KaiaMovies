@@ -538,7 +538,7 @@ const model = {
                 description: "A young F.B.I. cadet must receive the help of an incarcerated and manipulative cannibal killer to help catch another serial killer, a madman who skins his victims."
             },
             {
-                name: "Schindler's List",
+                name: "Schindlers List",
                 rating: [890, 900, 910],
                 avgRating: 900,
                 category: "Biography",
@@ -549,27 +549,27 @@ const model = {
                 comments: [
                     {
                         date: "28.9.2024",
-                        time: "24.00.00",
+                        time: "24:00:00",
                         userName: "Alex",
                         comment: "A powerful and moving film.",
                         rating: 900
                     },
                     {
                         date: "29.9.2024",
-                        time: "14.00.00",
+                        time: "14:00:00",
                         userName: "Jordan",
                         comment: "An important and emotional story.",
                         rating: 890
                     },
                     {
                         date: "30.9.2024",
-                        time: "16.00.00",
+                        time: "16:00:00",
                         userName: "Taylor",
                         comment: "A masterpiece of cinema.",
                         rating: 910
                     }
                 ],
-                description: "In German-occupied Poland during World War II, industrialist Oskar Schindler gradually becomes concerned for his Jewish workforce after witnessing their persecution by the Nazis."
+                description: "In German-occupied Poland during World War II, industrialist Oskar Schindler gradually becomes concerned for his Jewish workforce after witnessing their persecution by the Nazis.",
             },
             {
                 name: "Interstellar",
