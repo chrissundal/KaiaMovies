@@ -36,7 +36,12 @@ function sendMovieRating(){
     calculateRating();
     updateMovieView();
 }
-function addToFavorite() {
-    model.data.users[model.input.profile.selectedUser].favorites.push(model.data.movies[model.input.moviePage.selectedNumber].name)
+function addToFavorite(selectedMovieName) {
+    const favmovie = model.data.users[model.input.profile.selectedUser].favorites.includes(selectedMovieName);
+    if (!favmovie) {
+        model.data.users[model.input.profile.selectedUser].favorites.push(selectedMovieName);
+    } else {
+        model.data.users[model.input.profile.selectedUser].favorites.splice(selectedMovieName, 1);
+    }
     updateMovieView();
 }

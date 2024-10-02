@@ -24,9 +24,7 @@ function createMovieInfo() {
             <br>
             <img src="${selectedMovie.movieImage}" height = 400px width = 300px/>
             <br>
-            <div class="movieFullIcons" onclick="addToFavorite()">
-                <img src="IMG/heart.png" height = 50px/>
-            </div>
+            ${checkFavorites()}
             <div class="movieFullDescription">${selectedMovie.description}</div>
             <br>
             <div class="movieFullFacts">
@@ -51,6 +49,18 @@ function createMovieInfo() {
         </div>
         `;
     return html;
+}
+function checkFavorites() {
+    const isFavorite = model.data.users[model.input.profile.selectedUser].favorites.includes(model.data.movies[model.input.moviePage.selectedNumber].name);
+    if (!isFavorite) {
+        return `<div class="movieFullIcons" onclick="addToFavorite('${model.data.movies[model.input.moviePage.selectedNumber].name}')">
+                    <img src="IMG/heart.png" height="50px"/>
+                </div>`;
+    } else {
+        return `<div class="movieFullIcons" onclick="addToFavorite('${model.data.movies[model.input.moviePage.selectedNumber].name}')">
+                    <img src="IMG/heartfull.png" height="50px"/>
+                </div>`;
+    }
 }
 function inputMovieRating(text) {
     model.input.moviePage.inputRating = text;
