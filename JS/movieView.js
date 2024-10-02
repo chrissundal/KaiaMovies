@@ -68,12 +68,12 @@ function inputMovieRating(text) {
 }
 function createMovieComments() {
     let html = '';
-    for (let comIndex = 0; comIndex < model.data.movies[model.input.moviePage.selectedNumber].comments.length; comIndex++) {
+    for (let comIndex = model.data.movies[model.input.moviePage.selectedNumber].comments.length -1; comIndex >= 0;  comIndex--) {
         html += `
         <div class="movieFullCommentFrame">
             <div style="text-align: center;">${model.data.movies[model.input.moviePage.selectedNumber].comments[comIndex].userName} skrev:</div>
             <div>${model.data.movies[model.input.moviePage.selectedNumber].comments[comIndex].comment}</div>
-            <div style="text-align: center;">Rating: ${model.data.movies[model.input.moviePage.selectedNumber].comments[comIndex].rating} / 1000</div>
+            <div style="text-align: center; color: yellow">Rating: ${model.data.movies[model.input.moviePage.selectedNumber].comments[comIndex].rating} / 1000</div>
             <div style="text-align: center; font-size: 10px">${model.data.movies[model.input.moviePage.selectedNumber].comments[comIndex].date}  ${model.data.movies[model.input.moviePage.selectedNumber].comments[comIndex].time}</div>
         </div>
         `;

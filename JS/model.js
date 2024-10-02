@@ -11,7 +11,7 @@ const model = {
             'loginPage',
             'friendPage'
         ],
-        currentPage: 'loginPage',
+        currentPage: 'startPage',
         isOpenMovie: false,
     },
     
