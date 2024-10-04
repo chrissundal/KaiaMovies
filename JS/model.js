@@ -1,6 +1,5 @@
 const appDiv = document.getElementById('app')
 const model = {
-    
     app: {
         pages: [
             'startPage',
@@ -77,11 +76,19 @@ const model = {
                 userName: "Chris",
                 password: "chris123",
                 userImage: "/IMG/users/chris.jpg",
-                comments: [],
+                comments: [
+                    {
+                        date: "28.9.2024",
+                        time: "20:19:06",
+                        movie: "The Shawshank Redemption",
+                        comment: "God gammeldags kvalitetsfilm! likte den godt",
+                        rating: 930
+                    },
+                ],
                 isAdmin: true,
                 friendComments: [],
-                friends: [],
-                favorites: [],
+                friends: ['Nico'],
+                favorites: ["Goodfellas", "The Departed"],
                 aboutme: "hei, jeg heter Christoffer og er 37 år fra Larvik"
             },
             {
@@ -94,7 +101,7 @@ const model = {
                 friendComments: [],
                 friends: [],
                 favorites: [],
-                aboutme: "Hei jeg heter Frank-Remi og er 44 år, ugift fra Halden. Liker ofte og dra på Sverigeturer og handle databrus og bacon sammen med mamma. Har en liten drøm om å bli nr 1 i norge på Dungeons & Dragons."
+                aboutme: "Hei jeg heter Frank-Remi og er 44 år, ugift fra Halden. Liker ofte og dra på Sverigeturer og handle databrus og bacon sammen med mamma."
             },
             {
                 userId: 2,
