@@ -40,23 +40,20 @@ function createMainMovieList() {
     const allMovies = model.data.movies;
     const filteredMovies = allMovies.filter(movie => !model.data.users[model.input.profile.selectedUser].watchlist.find(m => m.name === movie.name) && movie.avgRating >= 800);
 
-    while (model.input.mainPage.uniqueMovies.length < 4 && filteredMovies.length > 0) {
+    for (let i = 0; i < 4 && filteredMovies.length > 0; i++) {
         const randomIndex = Math.floor(Math.random() * filteredMovies.length);
         model.input.mainPage.uniqueMovies.push(filteredMovies[randomIndex]);
         filteredMovies.splice(randomIndex, 1);
-    }
 
-    for (let index = 0; index < model.input.mainPage.uniqueMovies.length; index++) {
         html += `
-        <div class="movieBox" onclick="goMovie('${model.input.mainPage.uniqueMovies[index].name}')">
-            <div class="movieRating">${model.input.mainPage.uniqueMovies[index].avgRating}</div>
+        <div class="movieBox" onclick="goMovie('${model.input.mainPage.uniqueMovies[i].name}')">
+            <div class="movieRating">${model.input.mainPage.uniqueMovies[i].avgRating}</div>
             <br>
-            <img src="${model.input.mainPage.uniqueMovies[index].movieImage}" height="130px" width="90px"/>
+            <img src="${model.input.mainPage.uniqueMovies[i].movieImage}" height="130px" width="90px"/>
             <br>
-            <div class="movieText">${model.input.mainPage.uniqueMovies[index].name}</div>
+            <div class="movieText">${model.input.mainPage.uniqueMovies[i].name}</div>
         </div>
         `;
     }
-
     return html;
 }
