@@ -10,7 +10,7 @@ const model = {
             'loginPage',
             'friendPage'
         ],
-        currentPage: 'moviePage',
+        currentPage: 'startPage',
         isOpenMovie: false,
     },
     
@@ -68,6 +68,9 @@ const model = {
             year: 0,
             comments: [],
             description: null
+        },
+        mainPage: {
+            uniqueMovies: []
         }
     },
 

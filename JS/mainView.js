@@ -37,24 +37,33 @@ function createDropdownMovie() {
 }
 function createMainMovieList() {
     let html = '';
-    let count = 0;
-    const addedMovies = new Set();
+    const unique = getUniqueMovies();
+    for(let index = 0; index < model.input.mainPage.uniqueMovies.length; index++){
 
-    while (count < 4) {
-        const movie = model.data.movies[Math.floor(Math.random() * model.data.movies.length)];
-        if (movie.avgRating > 860 && !addedMovies.has(movie.name) && !model.data.users[model.input.profile.selectedUser].watchlist.find(m => m.name === movie.name)) {
-            html += `
-                <div class="movieBox" onclick="goMovie('${movie.name}')">
-                    <div class="movieRating">${movie.avgRating}</div>
-                    <br>
-                    <img src="${movie.movieImage}" height="130px" width="90px"/>
-                    <br>
-                    <div class="movieText">${movie.name}</div>
-                </div>
-            `;
-            addedMovies.add(movie.name);
-            count++;
+        html += `
+        <div class="movieBox" onclick="goMovie('${model.input.mainPage.uniqueMovies[index].name}')">
+        <div class="movieRating">${model.input.mainPage.uniqueMovies[index].avgRating}</div>
+        <br>
+        <img src="${model.input.mainPage.uniqueMovies[index].movieImage}" height="130px" width="90px"/>
+        <br>
+        <div class="movieText">${model.input.mainPage.uniqueMovies[index].name}</div>
+        </div>
+        `;
         }
-    }
+            
     return html;
+}
+
+
+function getUniqueMovies() {
+    const allMovies = model.data.movies;
+    const filteredMovies = allMovies.filter(movie => !model.data.users[model.input.profile.selectedUser].watchlist.find(m => m.name === movie.name) && movie.avgRating >= 800);
+    
+    while (model.input.mainPage.uniqueMovies.length < 4 && filteredMovies.length > 0) {
+        const randomIndex = Math.floor(Math.random() * filteredMovies.length);
+        model.input.mainPage.uniqueMovies.push(filteredMovies[randomIndex]);
+        filteredMovies.splice(randomIndex, 1);
+    }
+
+    return model.input.mainPage.uniqueMovies;
 }

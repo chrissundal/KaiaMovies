@@ -4,6 +4,7 @@ function goMovie(movieName){
     if (selectedMovie) {
         model.input.moviePage.selectedNumber = model.data.movies.indexOf(selectedMovie);
     }
+    model.input.mainPage.uniqueMovies = [];
     model.app.isOpenMovie = false;
     updateMovieView();
 }
