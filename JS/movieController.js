@@ -37,25 +37,76 @@ function sendMovieRating(){
     updateMovieView();
 }
 function addToFavorite(selectedMovieName) {
-    const user = model.data.users[model.input.profile.selectedUser];
-    const favIndex = user.favorites.findIndex(movie => movie.name === selectedMovieName);
+    const favIndex = model.data.users[model.input.profile.selectedUser].favorites.findIndex(movie => movie.name === selectedMovieName);
     
     if (favIndex === -1) {
-        user.favorites.push({ name: selectedMovieName });
+        model.data.users[model.input.profile.selectedUser].favorites.push({ name: selectedMovieName });
     } else {
-        user.favorites.splice(favIndex, 1);
+        model.data.users[model.input.profile.selectedUser].favorites.splice(favIndex, 1);
     }
     updateMovieView();
 }
 
 function addToWatched(selectedMovieName) {
-    const user = model.data.users[model.input.profile.selectedUser];
-    const watchIndex = user.watchlist.findIndex(movie => movie.name === selectedMovieName);
+    const watchIndex = model.data.users[model.input.profile.selectedUser].watchlist.findIndex(movie => movie.name === selectedMovieName);
     
     if (watchIndex === -1) {
-        user.watchlist.push({ name: selectedMovieName });
+        model.data.users[model.input.profile.selectedUser].watchlist.push({ name: selectedMovieName });
     } else {
-        user.watchlist.splice(watchIndex, 1);
+        model.data.users[model.input.profile.selectedUser].watchlist.splice(watchIndex, 1);
     }
     updateMovieView();
+}
+function inputMovieRating(text) {
+    model.input.moviePage.inputRating = text;
+    updateMovieView();
+}
+function createMovieComments() {
+    let html = '';
+    for (let comIndex = model.data.movies[model.input.moviePage.selectedNumber].comments.length -1; comIndex >= 0;  comIndex--) {
+        html += `
+        <div class="movieFullCommentFrame">
+            <div style="text-align: center;">${model.data.movies[model.input.moviePage.selectedNumber].comments[comIndex].userName} skrev:</div>
+            <div>${model.data.movies[model.input.moviePage.selectedNumber].comments[comIndex].comment}</div>
+            <div style="text-align: center; color: yellow">Rating: ${model.data.movies[model.input.moviePage.selectedNumber].comments[comIndex].rating} / 1000</div>
+            <div style="text-align: center; font-size: 10px">${model.data.movies[model.input.moviePage.selectedNumber].comments[comIndex].date}  ${model.data.movies[model.input.moviePage.selectedNumber].comments[comIndex].time}</div>
+        </div>
+        `;
+    }
+    return html;
+}
+
+function checkFavorites() {
+    const selectedMovieName = model.data.movies[model.input.moviePage.selectedNumber].name;
+    const isFavorite = model.data.users[model.input.profile.selectedUser].favorites.find(movie => movie.name === selectedMovieName);
+    
+    if (!isFavorite) {
+        return `<div class="movieFullIcons" onclick="addToFavorite('${selectedMovieName}')">
+                    <img src="IMG/heart.png" height="50px"/>
+                </div>`;
+    } else {
+        return `<div class="movieFullIcons" onclick="addToFavorite('${selectedMovieName}')">
+                    <img src="IMG/heartfull.png" height="50px"/>
+                </div>`;
+    }
+}
+
+function checkWatched() {
+    const selectedMovieName = model.data.movies[model.input.moviePage.selectedNumber].name;
+    const isWatched = model.data.users[model.input.profile.selectedUser].watchlist.find(movie => movie.name === selectedMovieName);
+    
+    if (!isWatched) {
+        return `<div class="movieFullIconwatch" onclick="addToWatched('${selectedMovieName}')">
+                    <img src="IMG/eye.png" height="50px"/>
+                </div>`;
+    } else {
+        return `<div class="movieFullIconwatch" onclick="addToWatched('${selectedMovieName}')">
+                    <img src="IMG/check.png" height="50px"/>
+                </div>
+                <div class="movieFullRating">
+                    <input type="range" value="${model.input.moviePage.inputRating}" placeholder="Rating" onchange="inputMovieRating(this.valueAsNumber)" max="1000"> ${model.input.moviePage.inputRating}
+                    <input type="text" placeholder="skriv en anmeldelse" onchange="model.input.moviePage.inputComment=this.value">
+                    <button onclick="sendMovieRating()">Send</button>
+                </div>`;
+    }
 }
