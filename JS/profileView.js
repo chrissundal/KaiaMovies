@@ -6,77 +6,57 @@ function updateProfilView() {
         ${createDropdownMovie()}
         <div class="profileDropBtn" onclick="goProfile()"><img src="IMG/profile.png" height = 60px></div>
     </div>
-    <div class="userProfile">
-    <div class="innerProfile">
-    <div class="imageContainer">
-    <h2>${model.data.users[model.input.profile.selectedUser].userName}<h2>
-        <div><img src="${
-          model.data.users[model.input.profile.selectedUser].userImage
-        }" height = 250px width = 400px></div>
-        </div>
-        <div>${model.data.users[model.input.profile.selectedUser].aboutme}</div>
-        <div class="friends-favoritesList">
-            <div class="friendSpace">
-            <h3>Friends</h3>
-            <div class="friendList">${createFriendList()}</div>
-            <div class="addFriend">
-            <input type="text" placeholder="Add a friend" oninput="updateFriendInput(this)" />
-            <button onclick="addFriend(this.previousElementSibling)">Add Friend</button>
-        </div>
-            </div>
-            <div class="favoritesList">
-            <h3>Favorites</h3>
-            <ul>
-            <div style="font:bold">${
-              model.data.users[model.input.profile.selectedUser].favorites
-            }
-            </ul>
+        <div class="userProfile">
+              <div class="imageContainer">
+                <h2>${model.data.users[model.input.profile.selectedUser].userName}<h2>
+                <div><img src="${model.data.users[model.input.profile.selectedUser].userImage}" height = 250px width = 400px></div>
               </div>
-            </div>
-        </div>
-    </div>
-    <div class="earlierComments">
-        <h3>Tidligere Kommentarer<h3>
-        <ul>
-        <div style="font-size: 24pt">${createComments()}</div>
-        </ul>
-        </div>
-
-</div>
+              <div>${model.data.users[model.input.profile.selectedUser].aboutme}</div>
+              </div>
+              ${createSocial()}
     `;
   appDiv.innerHTML = profilPage;
 }
+function createSocial(){
+  let socialHtml = '';
+  socialHtml = `
+  <div class="friendsCommentsList">
+      <div class="friendSpace">
+          <h3>Friends</h3>
+          ${createFriendList()}
+          <div class="addFriend">
+              <input type="text" placeholder="Add a friend" oninput="updateFriendInput(this)" />
+              <button onclick="addFriend(this.previousElementSibling)">Add Friend</button>
+          </div>
+      </div>
+      <div class="earlierComments">
+          <h3>Tidligere Kommentarer<h3>
+          <div>${createComments()}</div>
+      </div>
+  </div>
+      <div class="favoritesList">
+          <h3>Favorites</h3>
+          <div style="font:bold">
+              ${createFavoriteList()}
+          </div>
+      </div>
+      <div class="profileWatchList">
+        <h3>Filmer sett:</h3>
+        ${createWatchlist()}
+      </div>
+  `;
+  return socialHtml;
+}
 function createComments() {
   let html = "";
-  for (
-    let index = 0;
-    index < model.data.users[model.input.profile.selectedUser].comments.length;
-    index++
-  ) {
+  for (let index = 0; index < model.data.users[model.input.profile.selectedUser].comments.length; index++) {
     html += /*HTML*/ `
-      
-        <div>${
-          model.data.users[model.input.profile.selectedUser].comments[index]
-            .movie
-        }</div>   
-        <div>${
-          model.data.users[model.input.profile.selectedUser].comments[index]
-            .rating
-        }</div>
-        <div>${
-          model.data.users[model.input.profile.selectedUser].comments[index]
-            .comment
-        }</div>
-        <div>${
-          model.data.users[model.input.profile.selectedUser].comments[index]
-            .date
-        }
-        ${
-          model.data.users[model.input.profile.selectedUser].comments[index]
-            .time
-        }
-        </div>
-        
+      <div class="innerProfileComments">
+          <div>${model.data.users[model.input.profile.selectedUser].comments[index].movie}</div>   
+          <div>${model.data.users[model.input.profile.selectedUser].comments[index].rating}</div>
+          <div>${model.data.users[model.input.profile.selectedUser].comments[index].comment}</div>
+          <div>${model.data.users[model.input.profile.selectedUser].comments[index].date} ${model.data.users[model.input.profile.selectedUser].comments[index].time}</div>
+      </div>
         `;
   }
   return html;
@@ -84,16 +64,11 @@ function createComments() {
 
 function createFriendList() {
   let html = "";
-  for (
-    let index = 0;
-    index < model.data.users[model.input.profile.selectedUser].friends.length;
-    index++
-  ) {
+  for (let index = 0; index < model.data.users[model.input.profile.selectedUser].friends.length; index++) {
     html += /*HTML*/ `
-    
-    <div>${
-      model.data.users[model.input.profile.selectedUser].friends[index]
-    }</div>
+    <div>
+        ${model.data.users[model.input.profile.selectedUser].friends[index]}
+    </div>
     `;
   }
   return html;
@@ -144,16 +119,26 @@ function addFriend(inputFriend) {
 
 function createFavoriteList() {
   let html = "";
-  for (
-    let index = 0;
-    index < model.data.users[model.input.profile.selectedUser].favorites.length;
-    index++
-  ) {
+  for (let favindex = 0; favindex < model.data.users[model.input.profile.selectedUser].favorites.length; favindex++) {
+    const movie = model.data.users[model.input.profile.selectedUser].favorites[favindex];
     html += /*HTML*/ `
     
-    <div>${
-      model.data.users[model.input.profile.selectedUser].favorites[index]
-    }</div>
+    <div class="favoriteProfileClick" onclick="goMovie('${movie.name}')">
+        ${model.data.users[model.input.profile.selectedUser].favorites[favindex].name}
+    </div>
+    `;
+  }
+  return html;
+}
+function createWatchlist() {
+  let html = '';
+  for (let i = model.data.users[model.input.profile.selectedUser].watchlist.length - 1; i >= 0; i--) {
+    const movie = model.data.users[model.input.profile.selectedUser].watchlist[i];
+    html += `
+      <div class="watchListProfileClick" onclick="goMovie('${movie.name}')">
+      ${model.data.users[model.input.profile.selectedUser].watchlist[i].name}
+      </div>
+    
     `;
   }
   return html;

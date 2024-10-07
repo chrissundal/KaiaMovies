@@ -1,24 +1,58 @@
+.watchListProfileClick{
+    cursor: pointer;
+}
+.favoriteProfileClick{
+    cursor: pointer;
+}
+.friendsCommentsList{
+    position: relative;
+    bottom: 360px;
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+    justify-content: center;
+    background-color: cadetblue;
+    float: right;
+    max-height: 600px;
+}
 .userProfile{
-    
-    background-color: antiquewhite;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
 }
-
-.innerProfile{
-   
-    background-color: rgb(185, 119, 33);
-}
-
-.friends-favoritesList{
+.friendSpace{
+    background-color: green;
+    position: relative;
+    text-align: center;
     
-    background-color: rgb(44, 89, 46);
 }
-
-.friendsList{
-    
-    background-color: rgb(238, 206, 0);
+.friendSpace button {
+    position: relative;
+    right: 6px;
+    top: 3px;
+    height: 30px;
+    width: 105px;
+    border-bottom: 2px solid #ccc;
+    border-top: 2px solid #ccc;
+    border-right: 2px solid #ccc;
+    border-radius: 0 10px 10px 0;
 }
-
-.commentaryInput{
-    
-    background-color: rgb(4, 0, 238);
+.friendSpace input {
+    position: relative;
+    top: 2px;
+    height: 24px;
+    width: 250px;
+    border-radius: 10px 0 0 10px;
+    margin: 10px 0 10px 0;
+    border: 2px solid #ccc;
+    outline: none;
+    transition: border-color 0.3s;
+}
+.friendSpace input:focus {
+    border-color: #333;
+}
+.innerProfileComments{
+    border: 1px solid #ccc;
+    margin: 5px;
+    padding: 5px;
 }

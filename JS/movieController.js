@@ -37,11 +37,25 @@ function sendMovieRating(){
     updateMovieView();
 }
 function addToFavorite(selectedMovieName) {
-    const favmovie = model.data.users[model.input.profile.selectedUser].favorites.includes(selectedMovieName);
-    if (!favmovie) {
-        model.data.users[model.input.profile.selectedUser].favorites.push(selectedMovieName);
+    const user = model.data.users[model.input.profile.selectedUser];
+    const favIndex = user.favorites.findIndex(movie => movie.name === selectedMovieName);
+    
+    if (favIndex === -1) {
+        user.favorites.push({ name: selectedMovieName });
     } else {
-        model.data.users[model.input.profile.selectedUser].favorites.splice(selectedMovieName, 1);
+        user.favorites.splice(favIndex, 1);
+    }
+    updateMovieView();
+}
+
+function addToWatched(selectedMovieName) {
+    const user = model.data.users[model.input.profile.selectedUser];
+    const watchIndex = user.watchlist.findIndex(movie => movie.name === selectedMovieName);
+    
+    if (watchIndex === -1) {
+        user.watchlist.push({ name: selectedMovieName });
+    } else {
+        user.watchlist.splice(watchIndex, 1);
     }
     updateMovieView();
 }

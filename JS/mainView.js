@@ -38,21 +38,19 @@ function createDropdownMovie() {
 function createMainMovieList() {
     let html = '';
     let count = 0;
-    let addedMovies = new Set();
-    let randomNumberMain = 0;
+    const addedMovies = new Set();
 
     while (count < 4) {
-        randomNumberMain = Math.floor(Math.random() * model.data.movies.length);
-        const movie = model.data.movies[randomNumberMain];
-        if (movie.avgRating > 860 && !addedMovies.has(movie.name)) {
+        const movie = model.data.movies[Math.floor(Math.random() * model.data.movies.length)];
+        if (movie.avgRating > 860 && !addedMovies.has(movie.name) && !model.data.users[model.input.profile.selectedUser].watchlist.find(m => m.name === movie.name)) {
             html += `
-            <div class="movieBox" onclick="goMovie('${movie.name}')">
-                <div class="movieRating">${movie.avgRating}</div>
-                <br>
-                <img src="${movie.movieImage}" height="130px" width="90px"/>
-                <br>
-                <div class="movieText">${movie.name}</div>
-            </div>
+                <div class="movieBox" onclick="goMovie('${movie.name}')">
+                    <div class="movieRating">${movie.avgRating}</div>
+                    <br>
+                    <img src="${movie.movieImage}" height="130px" width="90px"/>
+                    <br>
+                    <div class="movieText">${movie.name}</div>
+                </div>
             `;
             addedMovies.add(movie.name);
             count++;

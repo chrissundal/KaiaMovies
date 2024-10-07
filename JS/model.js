@@ -10,7 +10,7 @@ const model = {
             'loginPage',
             'friendPage'
         ],
-        currentPage: 'startPage',
+        currentPage: 'moviePage',
         isOpenMovie: false,
     },
     
@@ -22,6 +22,7 @@ const model = {
             userImage: null,
             comments: [], //reviews
             friendComments: [],
+            watchlist: [],
             friends: [],
             favorites: [],
             aboutme: null
@@ -42,7 +43,8 @@ const model = {
             selectedNumber: 0,
             inputComment: null,
             averageRating: null,
-            showMovie: null
+            showMovie: null,
+            isSelected: false
         },
         category: {
             categorySort: null,
@@ -87,8 +89,9 @@ const model = {
                 ],
                 isAdmin: true,
                 friendComments: [],
+                watchlist: [{name: "The Shawshank Redemption"}],
                 friends: ['Nico'],
-                favorites: ["Goodfellas", "The Departed"],
+                favorites: [{name: "The Godfather"},{name: "Forrest Gump"}],
                 aboutme: "hei, jeg heter Christoffer og er 37 år fra Larvik"
             },
             {
@@ -99,6 +102,7 @@ const model = {
                 comments: [],
                 isAdmin: false,
                 friendComments: [],
+                watchlist: [],
                 friends: [],
                 favorites: [],
                 aboutme: "Hei jeg heter Frank-Remi og er 44 år, ugift fra Halden. Liker ofte og dra på Sverigeturer og handle databrus og bacon sammen med mamma."
@@ -117,6 +121,7 @@ const model = {
                  }],
                 isAdmin: true,
                 friendComments: [],
+                watchlist: [],
                 friends: ['Chris'],
                 favorites: ["The Shawshank Redemption"],
                 aboutme: "Hei, jeg heter Nicolai. 31 år fra Moss",
@@ -129,6 +134,7 @@ const model = {
                 comments: [],
                 isAdmin: false,
                 friendComments: [],
+                watchlist: [],
                 friends: ['Filmfan16'],
                 favorites: [],
                 aboutme: "Hei, eg heitar Knut og har et ønskje om å bli marinejegar."

@@ -15,6 +15,7 @@ function updateSearchView() {
             <tr>
                 <th class="header"></th>
                 <th class="header">Navn på film</th>
+                <th class="header">Kategori</th>
                 <th class="header">Rating</th>
                 <th class="header">Antall ratings</th>
                 <th class="header">År laget</th>

@@ -33,7 +33,8 @@ function createSearchPage() {
             <tr onclick="goMovie('${movie.name}')">
                 <td><img src="${movie.movieImage}" height = 70px width = 50px/></td>
                 <td><div class="searchPageText">${movie.name}</div></td>
-                <td><div class="searchPageRating">${movie.avgRating}</div></td>
+                <td><div class="searchPageText">${movie.category}</div></td>
+                <td><div class="searchPageRating">${movie.avgRating} /1000</div></td>
                 <td><div class="searchPageYear">${movie.rating.length}</div></td>
                 <td><div class="searchPageYear">${movie.year}</div></td>
             </tr>
