@@ -5,6 +5,7 @@ function updateMainView() {
         ${createHeader()}
         ${createDropdownMovie()}
         <div class="profileDropBtn" onclick="goProfile()"><img src="IMG/profile.png" height = 60px></div>
+        <div class="logOutBtn" onclick="goLogin()"><img src="IMG/lock.png" height = 70px></div>
         </div>
         <div class="mainStartText">Hei ${model.input.login.userName}</div>
         <div class="mainGridrec">
@@ -16,11 +17,20 @@ function updateMainView() {
 
 function createHeader() {
     let html = '';
-    html = `
-    <div class="header" onclick="goHomeButton()">
+    if (model.data.users[model.input.profile.selectedUser].isAdmin) {
+        html = `
+        <div class="header" onclick="goHomeButton()">
+            <img src="IMG/kaiamovies.png" height = 80px>
+            <div class="adminMark">ADMIN</div>
+        </div>
+        `;   
+    }else{
+        html = `
+        <div class="header" onclick="goHomeButton()">
         <img src="IMG/kaiamovies.png" height = 80px>
-    </div>
-    `;
+        </div>
+        `;
+        }
     return html;
 }
 function createDropdownMovie() {

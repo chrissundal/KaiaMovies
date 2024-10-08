@@ -65,21 +65,53 @@ function inputMovieRating(text) {
 function createMovieComments() {
     let html = '';
     for (let comIndex = model.data.movies[model.input.moviePage.selectedNumber].comments.length -1; comIndex >= 0;  comIndex--) {
-        html += `
-        <div class="movieFullCommentFrame">
+        if (model.data.users[model.input.profile.selectedUser].isAdmin) {
+            html += `
+            <div class="movieFullCommentFrame">
             <div style="text-align: center;">${model.data.movies[model.input.moviePage.selectedNumber].comments[comIndex].userName} skrev:</div>
             <div>${model.data.movies[model.input.moviePage.selectedNumber].comments[comIndex].comment}</div>
             <div style="text-align: center; color: yellow">Rating: ${model.data.movies[model.input.moviePage.selectedNumber].comments[comIndex].rating} / 1000</div>
             <div style="text-align: center; font-size: 10px">${model.data.movies[model.input.moviePage.selectedNumber].comments[comIndex].date}  ${model.data.movies[model.input.moviePage.selectedNumber].comments[comIndex].time}</div>
-        </div>
-        `;
+            <button onclick="deleteMovieRating(${comIndex})">Slett</button>
+            <input type="number" placeholder="Endre rating... "onchange="changeMovieRating(this.valueAsNumber, ${comIndex})">
+            </div>
+            `;
+        }else{
+            html += `
+            <div class="movieFullCommentFrame">
+            <div style="text-align: center;">${model.data.movies[model.input.moviePage.selectedNumber].comments[comIndex].userName} skrev:</div>
+            <div>${model.data.movies[model.input.moviePage.selectedNumber].comments[comIndex].comment}</div>
+            <div style="text-align: center; color: yellow">Rating: ${model.data.movies[model.input.moviePage.selectedNumber].comments[comIndex].rating} / 1000</div>
+            <div style="text-align: center; font-size: 10px">${model.data.movies[model.input.moviePage.selectedNumber].comments[comIndex].date}  ${model.data.movies[model.input.moviePage.selectedNumber].comments[comIndex].time}</div>
+            </div>
+            `;
+        }
     }
     return html;
 }
-
+function changeMovieRating(newRating, index) {
+    let selectedMovie = model.data.movies[model.input.moviePage.selectedNumber];
+    selectedMovie.rating[index] = newRating;
+    selectedMovie.comments[index].rating = newRating;
+    calculateRating();
+    updateMovieView();
+}
+function deleteMovieRating(index) {
+    let selectedMovie = model.data.movies[model.input.moviePage.selectedNumber];
+    let selectedUser = model.data.users[model.input.profile.selectedUser];
+    let commentToDelete = selectedMovie.comments[index];
+    let userCommentIndex = selectedUser.comments.findIndex(comment => comment.movie === selectedMovie.name && comment.comment === commentToDelete.comment);
+    selectedMovie.comments.splice(index, 1);
+    selectedMovie.rating.splice(index, 1);
+    if (userCommentIndex !== -1) {
+        selectedUser.comments.splice(userCommentIndex, 1);
+    }
+    calculateRating();
+    updateMovieView();
+}
 function checkFavorites() {
-    const selectedMovieName = model.data.movies[model.input.moviePage.selectedNumber].name;
-    const isFavorite = model.data.users[model.input.profile.selectedUser].favorites.find(movie => movie.name === selectedMovieName);
+    let selectedMovieName = model.data.movies[model.input.moviePage.selectedNumber].name;
+    let isFavorite = model.data.users[model.input.profile.selectedUser].favorites.find(movie => movie.name === selectedMovieName);
     
     if (!isFavorite) {
         return `<div class="movieFullIcons" onclick="addToFavorite('${selectedMovieName}')">

@@ -90,7 +90,7 @@ const model = {
                         rating: 930
                     },
                 ],
-                isAdmin: true,
+                isAdmin: false,
                 friendComments: [],
                 watchlist: [{name: "The Shawshank Redemption"}],
                 friends: ['Nico'],
@@ -126,7 +126,7 @@ const model = {
                 friendComments: [],
                 watchlist: [],
                 friends: ['Chris'],
-                favorites: ["The Shawshank Redemption"],
+                favorites: [{name: "The Shawshank Redemption"}],
                 aboutme: "Hei, jeg heter Nicolai. 31 år fra Moss",
             },
             {
@@ -161,14 +161,14 @@ const model = {
                         time: "24.00.00",
                         userName: "Pat",
                         comment: "So bad it's good. A cult classic.",
-                        rating: 380
+                        rating: 370
                     },
                     {
                         date: "29.9.2024",
                         time: "13.00.00",
                         userName: "Jordan",
                         comment: "Unintentionally hilarious.",
-                        rating: 370
+                        rating: 380
                     },
                     {
                         date: "30.9.2024",

@@ -47,7 +47,7 @@ button:hover {
 
 .homeIcon {
     position: absolute;
-    top: 12px;
+    top: 13px;
     left: 20px;
     transition: 0.3s ease;
 }
@@ -56,7 +56,22 @@ button:hover {
     transform: scale(1.05);
     cursor: pointer;
 }
+.logOutBtn {
+    position: absolute;
+    top: 18px;
+    left: 25px;
+    transition: 0.3s ease;
+}
 
+.logOutBtn:hover {
+    transform: scale(1.05);
+    cursor: pointer;
+}
+.adminMark{
+    position: relative;
+    bottom: 50px;
+    left: 100px;
+}
 /*dropdown*/
 .movieDropBtn {
     position: absolute;
