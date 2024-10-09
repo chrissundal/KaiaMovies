@@ -30,6 +30,7 @@ const model = {
         },
         profile: {
             selectedUser: 0,
+            selectedFriend: 0,
             profileBox: null,
             showProfile: null
         },

@@ -49,13 +49,14 @@ function createSocial(){
 }
 function createComments() {
   let html = "";
+  let currentUser = model.data.users[model.input.profile.selectedUser];
   for (let index = 0; index < model.data.users[model.input.profile.selectedUser].comments.length; index++) {
     html += /*HTML*/ `
       <div class="innerProfileComments">
-          <div>${model.data.users[model.input.profile.selectedUser].comments[index].movie}</div>   
-          <div>${model.data.users[model.input.profile.selectedUser].comments[index].rating}</div>
-          <div>${model.data.users[model.input.profile.selectedUser].comments[index].comment}</div>
-          <div>${model.data.users[model.input.profile.selectedUser].comments[index].date} ${model.data.users[model.input.profile.selectedUser].comments[index].time}</div>
+          <div>${currentUser.comments[index].movie}</div>   
+          <div>${currentUser.comments[index].rating}</div>
+          <div>${currentUser.comments[index].comment}</div>
+          <div>${currentUser.comments[index].date} ${currentUser.comments[index].time}</div>
       </div>
         `;
   }
@@ -64,14 +65,22 @@ function createComments() {
 
 function createFriendList() {
   let html = "";
-  for (let index = 0; index < model.data.users[model.input.profile.selectedUser].friends.length; index++) {
+  let currentUser = model.data.users[model.input.profile.selectedUser];
+  for (let index = 0; index < currentUser.friends.length; index++) {
+    let friendIndex = model.data.users.findIndex(user => user.userName === currentUser.friends[index]);
     html += /*HTML*/ `
-    <div>
-        ${model.data.users[model.input.profile.selectedUser].friends[index]}
+    <div onclick="goToFriend(${friendIndex})">
+        ${currentUser.friends[index]}
     </div>
     `;
   }
   return html;
+}
+
+function goToFriend(friendIndex){
+  model.input.profile.selectedFriend = friendIndex;
+  model.app.currentPage = 'friendPage';
+  updateFriendView();
 }
 
 let friendInputValue = "";
@@ -81,11 +90,13 @@ function updateFriendInput(input) {
   friendInputValue = input.value;
 }
 
+
 function addFriend(inputFriend) {
+  let currentUser = model.data.users[model.input.profile.selectedUser];
   if (friendInputValue == "") return;
 
   if (
-    model.data.users[model.input.profile.selectedUser].friends.includes(
+    currentUser.friends.includes(
       friendInputValue
     )
   ) {
@@ -99,7 +110,7 @@ function addFriend(inputFriend) {
     if (friendInputValue == model.data.users[index].userName) {
       friendFound = true;
 
-      model.data.users[model.input.profile.selectedUser].friends.push(
+      currentUser.friends.push(
         friendInputValue
       );
       updateProfilView();
