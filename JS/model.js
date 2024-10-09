@@ -91,7 +91,7 @@ const model = {
                         rating: 930
                     },
                 ],
-                isAdmin: true,
+                isAdmin: false,
                 friendComments: [],
                 watchlist: [{name: "The Shawshank Redemption"}],
                 friends: ['Nico'],
