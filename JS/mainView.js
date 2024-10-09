@@ -18,22 +18,23 @@ function createHeader() {
     let html = '';
     if (model.data.users[model.input.profile.selectedUser].isAdmin) {
         html = `
-        <div class="header" onclick="goHomeButton()">
-            <img src="IMG/kaiamovies.png" height = 80px>
+        <div class="header">
+            <img src="IMG/kaiamovies.png" height = 80px onclick="goHomeButton()">
             <div class="adminMark">ADMIN</div>
-            <div class="logOutBtn" onclick="goLogin()"><img src="IMG/lock.png" height = 70px></div>
         </div>
+        <div class="logOutBtn" onclick="goLogin()"><img src="IMG/lock.png" height = 70px></div>
         `;   
     }else{
         html = `
-        <div class="header" onclick="goHomeButton()">
-        <img src="IMG/kaiamovies.png" height = 80px>
-        <div class="logOutBtn" onclick="goLogin()"><img src="IMG/lock.png" height = 70px></div>
+        <div class="header">
+        <img src="IMG/kaiamovies.png" height = 80px onclick="goHomeButton()">
         </div>
+        <div class="logOutBtn" onclick="goLogin()"><img src="IMG/lock.png" height = 70px></div>
         `;
         }
     return html;
 }
+
 function createDropdownMovie() {
     if (model.app.isOpenMovie == false) return `<div class="movieDropBtn" onclick="openDropdownMovie()"><img src="IMG/search.png" height = 80px></div>`;
     return `
