@@ -95,7 +95,7 @@ const model = {
                 isAdmin: false,
                 friendComments: [],
                 watchlist: [{name: "The Shawshank Redemption"}],
-                friends: ['Nico'],
+                friends: ['Nico', 'InternalLocusOfControl', 'FilmFan16'],
                 favorites: [{name: "The Godfather"},{name: "Forrest Gump"}],
                 aboutme: "hei, jeg heter Christoffer og er 37 år fra Larvik"
             },
@@ -108,7 +108,7 @@ const model = {
                 isAdmin: false,
                 friendComments: [],
                 watchlist: [],
-                friends: [],
+                friends: ['Chris', 'InternalLocusOfControl'],
                 favorites: [],
                 aboutme: "Hei jeg heter Frank-Remi og er 44 år, ugift fra Halden. Liker ofte og dra på Sverigeturer og handle databrus og bacon sammen med mamma."
             },
@@ -140,9 +140,37 @@ const model = {
                 isAdmin: false,
                 friendComments: [],
                 watchlist: [],
-                friends: ['Filmfan16'],
+                friends: ['FilmFan16', 'Chris'],
                 favorites: [],
                 aboutme: "Hei, eg heitar Knut og har et ønskje om å bli marinejegar."
+            },
+
+            {
+                userId: 4,
+                userName: "Illuminati89",
+                password: "777",
+                userImage: "IMG/834737cb-0642-4e6a-b63f-21e695e08020.webp",
+                comments: [],
+                isAdmin: false,
+                friendComments: [],
+                watchlist: [],
+                friends: ['FilmFan16'],
+                favorites: [],
+                aboutme: "I'm here to share my passion for movies and illuminate you about 5G and the corona-virus."
+            },
+
+            {
+                userId: 4,
+                userName: "Predator",
+                password: "123",
+                userImage: "IMG/file-8YS30PpvW6DhDrFN9BEUXa8y.png",
+                comments: [],
+                isAdmin: false,
+                friendComments: [],
+                watchlist: [],
+                friends: ['FilmFan16'],
+                favorites: [{name:'The Room'},],
+                aboutme: "I was just released from prison"
             },
 
         ],

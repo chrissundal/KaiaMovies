@@ -1,6 +1,7 @@
 function updateFriendView() {
  const selectedFriend = model.data.users[model.input.profile.selectedFriend];
 
+  appDiv.innerHTML = '';
  let friendPage = /*HTML*/ `
     <div class="container">
         ${createHeader()}
@@ -10,7 +11,7 @@ function updateFriendView() {
         </div>
         <div class="userProfile">
          <div class="imageContainer">
-           <h2>${selectedFriend.userName}<h2>
+           <h2>${selectedFriend.userName}</h2>
            <div><img src="${selectedFriend.userImage}" height="250px" width="400px"></div>
          </div>
          <div>${selectedFriend.aboutme}</div>
@@ -20,10 +21,12 @@ function updateFriendView() {
             <div>${createFavoriteListForFriend()}</div>
             </div>
         <div class="friendWatchList">
-            <h3>Filmer sett:</h3>
+            <h3>Filmer sett</h3>
             <div>${createWatchlistForFriend()}</div>
         </div>
         <div>${createCommentsFriend()}</div>
+        <h3>Venner</h3>
+        ${createFriendListForFriend()}
         `;
         appDiv.innerHTML = friendPage;
 }
@@ -61,13 +64,36 @@ function createCommentsFriend(){
   for (let index = 0; index < model.data.users[model.input.profile.selectedFriend].comments.length; index++) {
     html += /*HTML*/ `
       <div class="innerProfileComments">
-          <div>${selectedFriend.comments[index].movie}</div>   
-          <div>${selectedFriend.comments[index].rating}</div>
-          <div>${selectedFriend.comments[index].comment}</div>
-          <div>${selectedFriend.comments[index].date} ${selectedFriend.comments[index].time}</div>
+          ${selectedFriend.comments[index].movie}<br>
+          ${selectedFriend.comments[index].rating}<br>
+          ${selectedFriend.comments[index].comment}<br>
+          ${selectedFriend.comments[index].date} ${selectedFriend.comments[index].time}
       </div>
         `;
   }
   return html;
 }
 
+function createFriendListForFriend() {
+  let html = "";
+  let selectedUser = model.data.users[model.input.profile.selectedFriend];
+  for (let index = 0; index < selectedUser.friends.length; index++) {
+    let friendIndex2 = model.data.users.findIndex(user => user.userName === selectedUser.friends[index]);
+    
+    html += /*HTML*/ `
+    <div onclick="goToFriend(${friendIndex2})">
+    ${selectedUser.friends[index]}</div>`;
+  }
+  return html;
+}
+function goToFriend(friendIndex2){
+  if (friendIndex2 === model.input.profile.selectedUser){
+    model.app.currentPage = 'profilPage';
+    updateProfilView();
+  }
+  else{
+  model.input.profile.selectedFriend = friendIndex2;
+  model.app.currentPage = 'friendPage';
+  updateFriendView();
+}
+}

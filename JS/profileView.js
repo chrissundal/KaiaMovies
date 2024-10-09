@@ -1,5 +1,6 @@
 updateProfilView();
 function updateProfilView() {
+  appDiv.innerHTML = '';
   profilPage = /*HTML*/ `
     <div class="container">
         ${createHeader()}
@@ -80,7 +81,7 @@ function createFriendList() {
 function goToFriend(friendIndex){
   model.input.profile.selectedFriend = friendIndex;
   model.app.currentPage = 'friendPage';
-  updateFriendView();
+
 }
 
 let friendInputValue = "";
@@ -110,9 +111,9 @@ function addFriend(inputFriend) {
     if (friendInputValue == model.data.users[index].userName) {
       friendFound = true;
 
-      currentUser.friends.push(
-        friendInputValue
-      );
+      currentUser.friends.push(friendInputValue);
+      model.data.users[index].friends.push(currentUser.userName);
+      
       updateProfilView();
       inputFriend.value = "";
       inputFriend.placeholder = "Add friend";
