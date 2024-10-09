@@ -21,3 +21,7 @@ background-color: #333333cc;
 .loginBox input {
     font-size: larger;
 }
+.loginBox input[type="file"] {
+    font-size: larger;
+    width: 250px;
+}

@@ -48,7 +48,7 @@ button:hover {
 .homeIcon {
     position: absolute;
     top: 13px;
-    left: 20px;
+    left: 100px;
     transition: 0.3s ease;
 }
 

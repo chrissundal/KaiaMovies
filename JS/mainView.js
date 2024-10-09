@@ -5,12 +5,11 @@ function updateMainView() {
         ${createHeader()}
         ${createDropdownMovie()}
         <div class="profileDropBtn" onclick="goProfile()"><img src="IMG/profile.png" height = 60px></div>
-        <div class="logOutBtn" onclick="goLogin()"><img src="IMG/lock.png" height = 70px></div>
-        </div>
-        <div class="mainStartText">Hei ${model.input.login.userName}</div>
-        <div class="mainGridrec">
+    </div>
+    <div class="mainStartText">Hei ${model.input.login.userName}</div>
+    <div class="mainGridrec">
         ${createMainMovieList()}
-        </div>
+    </div>
     `;
     appDiv.innerHTML = startPage;
 }
@@ -22,12 +21,14 @@ function createHeader() {
         <div class="header" onclick="goHomeButton()">
             <img src="IMG/kaiamovies.png" height = 80px>
             <div class="adminMark">ADMIN</div>
+            <div class="logOutBtn" onclick="goLogin()"><img src="IMG/lock.png" height = 70px></div>
         </div>
         `;   
     }else{
         html = `
         <div class="header" onclick="goHomeButton()">
         <img src="IMG/kaiamovies.png" height = 80px>
+        <div class="logOutBtn" onclick="goLogin()"><img src="IMG/lock.png" height = 70px></div>
         </div>
         `;
         }
@@ -39,7 +40,7 @@ function createDropdownMovie() {
     <div class="dropDownMovie">
     <div class="main">
         <div class="innerDrop" onclick="goSearch()">Filmsøk</div>
-        <div class="innerDrop" onclick="goCategory()">Kategorier</div>
+        <div class="innerDrop" onclick="goCategory()">Alle filmer</div>
         <div class="innerDropClose" onclick="closeDropdownMovie()">Lukk</div>
     </div>
     </div>

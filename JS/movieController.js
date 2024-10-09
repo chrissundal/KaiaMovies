@@ -62,37 +62,14 @@ function inputMovieRating(text) {
     model.input.moviePage.inputRating = text;
     updateMovieView();
 }
-function createMovieComments() {
-    let html = '';
-    for (let comIndex = model.data.movies[model.input.moviePage.selectedNumber].comments.length -1; comIndex >= 0;  comIndex--) {
-        if (model.data.users[model.input.profile.selectedUser].isAdmin) {
-            html += `
-            <div class="movieFullCommentFrame">
-            <div style="text-align: center;">${model.data.movies[model.input.moviePage.selectedNumber].comments[comIndex].userName} skrev:</div>
-            <div>${model.data.movies[model.input.moviePage.selectedNumber].comments[comIndex].comment}</div>
-            <div style="text-align: center; color: yellow">Rating: ${model.data.movies[model.input.moviePage.selectedNumber].comments[comIndex].rating} / 1000</div>
-            <div style="text-align: center; font-size: 10px">${model.data.movies[model.input.moviePage.selectedNumber].comments[comIndex].date}  ${model.data.movies[model.input.moviePage.selectedNumber].comments[comIndex].time}</div>
-            <button onclick="deleteMovieRating(${comIndex})">Slett</button>
-            <input type="number" placeholder="Endre rating... "onchange="changeMovieRating(this.valueAsNumber, ${comIndex})">
-            </div>
-            `;
-        }else{
-            html += `
-            <div class="movieFullCommentFrame">
-            <div style="text-align: center;">${model.data.movies[model.input.moviePage.selectedNumber].comments[comIndex].userName} skrev:</div>
-            <div>${model.data.movies[model.input.moviePage.selectedNumber].comments[comIndex].comment}</div>
-            <div style="text-align: center; color: yellow">Rating: ${model.data.movies[model.input.moviePage.selectedNumber].comments[comIndex].rating} / 1000</div>
-            <div style="text-align: center; font-size: 10px">${model.data.movies[model.input.moviePage.selectedNumber].comments[comIndex].date}  ${model.data.movies[model.input.moviePage.selectedNumber].comments[comIndex].time}</div>
-            </div>
-            `;
-        }
-    }
-    return html;
-}
+
 function changeMovieRating(newRating, index) {
-    let selectedMovie = model.data.movies[model.input.moviePage.selectedNumber];
-    selectedMovie.rating[index] = newRating;
-    selectedMovie.comments[index].rating = newRating;
+    let userCommentIndex = model.data.users[model.input.profile.selectedUser].comments.findIndex(comment => comment.movie === model.data.movies[model.input.moviePage.selectedNumber].name && comment.comment === model.data.movies[model.input.moviePage.selectedNumber].comments[index].comment);
+    model.data.movies[model.input.moviePage.selectedNumber].rating[index] = newRating;
+    model.data.movies[model.input.moviePage.selectedNumber].comments[index].rating = newRating;
+    if (userCommentIndex !== -1) {
+        model.data.users[model.input.profile.selectedUser].comments[userCommentIndex].rating = newRating;
+    }
     calculateRating();
     updateMovieView();
 }

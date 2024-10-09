@@ -19,8 +19,9 @@ const model = {
             userId: null,
             userName: null,
             password: null,
+            secondpassword: null,
             userImage: null,
-            comments: [], //reviews
+            comments: [],
             friendComments: [],
             watchlist: [],
             friends: [],
@@ -90,7 +91,7 @@ const model = {
                         rating: 930
                     },
                 ],
-                isAdmin: false,
+                isAdmin: true,
                 friendComments: [],
                 watchlist: [{name: "The Shawshank Redemption"}],
                 friends: ['Nico'],
