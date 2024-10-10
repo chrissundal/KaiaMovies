@@ -26,11 +26,6 @@ function createSocial(){
           <input type="text" placeholder="Add a friend" oninput="updateFriendInput(this)" />
           <button onclick="addFriend(this.previousElementSibling)">Add Friend</button>
       </div>
-      <div class="friendSpace">
-      <h3>Friends</h3>
-      ${createFriendList()}
-      </div>
-      </div>
       <div class="favandwatch">
       <div class="favoritesList">
       <h3>Favorites</h3>
@@ -43,10 +38,15 @@ function createSocial(){
       ${createWatchlist()}
       </div>
       <div class="earlierComments">
-          <h3>Tidligere Kommentarer<h3>
-          <div>${createComments()}</div>
+      <h3>Tidligere Kommentarer<h3>
+      <div>${createComments()}</div>
+      </div>
+      <div class="friendSpace">
+        <h3>Friends</h3>
+        ${createFriendList()}
       </div>
       </div>
+  </div>
   `;
   return socialHtml;
 }
