@@ -22,19 +22,9 @@ function createSocial(){
   let socialHtml = '';
   socialHtml = `
   <div class="friendsCommentsList">
-<<<<<<< Updated upstream
       <div class="addFriend">
-          <input type="text" placeholder="Add a friend" oninput="updateFriendInput(this)" />
+          <input type="text" placeholder="Add a friend"/>
           <button onclick="addFriend(this.previousElementSibling)">Add Friend</button>
-=======
-      <div class="friendSpace">
-          <h3>Friends</h3>
-          ${createFriendList()}
-          <div class="addFriend">
-              <input type="text" placeholder="Add a friend"/>
-              <button onclick="addFriend(this.previousElementSibling)">Add Friend</button>
-          </div>
->>>>>>> Stashed changes
       </div>
       <div class="favandwatch">
       <div class="favoritesList">
