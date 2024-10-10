@@ -78,12 +78,6 @@ function createFriendList() {
   return html;
 }
 
-function goToFriend(friendIndex){
-  model.input.profile.selectedFriend = friendIndex;
-  model.app.currentPage = 'friendPage';
-
-}
-
 let friendInputValue = "";
 let friendFound = false;
 

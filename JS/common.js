@@ -27,8 +27,9 @@ window.onpopstate = function () {
         navigateToSearch();
     } else if (page === "profil") {
         navigateToProfile();
-    } else if (page === "friend") {
-        navigateToFriend();
+    } else if (page.startsWith("friend-")) {
+        const friendIndex = page.replace("friend-", "");
+        navigateToFriend(friendIndex);
     } else {
         navigateToHome();
     }

@@ -86,14 +86,3 @@ function createFriendListForFriend() {
   }
   return html;
 }
-function goToFriend(friendIndex2){
-  if (friendIndex2 === model.input.profile.selectedUser){
-    model.app.currentPage = 'profilPage';
-    updateProfilView();
-  }
-  else{
-  model.input.profile.selectedFriend = friendIndex2;
-  model.app.currentPage = 'friendPage';
-  updateFriendView();
-}
-}
