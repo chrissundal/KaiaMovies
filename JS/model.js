@@ -30,9 +30,9 @@ const model = {
         },
         profile: {
             selectedUser: 0,
-            selectedFriend: 0,
+            selectedFriend:0,
             profileBox: null,
-            showProfile: null
+            showProfile: null,
         },
         login: {
             userId: '',
@@ -97,7 +97,8 @@ const model = {
                 watchlist: [{name: "The Shawshank Redemption"}],
                 friends: ['Nico', 'InternalLocusOfControl', 'FilmFan16'],
                 favorites: [{name: "The Godfather"},{name: "Forrest Gump"}],
-                aboutme: "hei, jeg heter Christoffer og er 37 år fra Larvik"
+                aboutme: "hei, jeg heter Christoffer og er 37 år fra Larvik",
+                chatMessage:[],
             },
             {
                 userId: 1,
@@ -110,7 +111,8 @@ const model = {
                 watchlist: [],
                 friends: ['Chris', 'InternalLocusOfControl'],
                 favorites: [],
-                aboutme: "Hei jeg heter Frank-Remi og er 44 år, ugift fra Halden. Liker ofte og dra på Sverigeturer og handle databrus og bacon sammen med mamma."
+                aboutme: "Hei jeg heter Frank-Remi og er 44 år, ugift fra Halden. Liker ofte og dra på Sverigeturer og handle databrus og bacon sammen med mamma.",
+                chatMessage:[],
             },
             {
                 userId: 2,
@@ -130,6 +132,7 @@ const model = {
                 friends: ['Chris'],
                 favorites: [{name: "The Shawshank Redemption"}],
                 aboutme: "Hei, jeg heter Nicolai. 31 år fra Moss",
+                chatMessage:[],
             },
             {
                 userId: 3,
@@ -142,7 +145,8 @@ const model = {
                 watchlist: [],
                 friends: ['FilmFan16', 'Chris'],
                 favorites: [],
-                aboutme: "Hei, eg heitar Knut og har et ønskje om å bli marinejegar."
+                aboutme: "Hei, eg heitar Knut og har et ønskje om å bli marinejegar.",
+                chatMessage:[],
             },
 
             {
@@ -156,7 +160,8 @@ const model = {
                 watchlist: [],
                 friends: ['FilmFan16'],
                 favorites: [],
-                aboutme: "I'm here to share my passion for movies and illuminate you about 5G and the corona-virus."
+                aboutme: "I'm here to share my passion for movies and illuminate you about 5G and the corona-virus.",
+                chatMessage:[],
             },
 
             {
@@ -170,10 +175,13 @@ const model = {
                 watchlist: [],
                 friends: ['FilmFan16'],
                 favorites: [{name:'The Room'},],
-                aboutme: "I was just released from prison"
+                aboutme: "I was just released from prison",
+                chatMessage:[],
             },
 
         ],
+
+        chatConversations: [],
         
         movies:  [
             {
