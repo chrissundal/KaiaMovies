@@ -10,7 +10,7 @@ const model = {
             'loginPage',
             'friendPage'
         ],
-        currentPage: 'profilPage',
+        currentPage: 'startPage',
         isOpenMovie: false,
     },
     
