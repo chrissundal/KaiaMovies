@@ -36,7 +36,7 @@ function createHeader() {
 }
 
 function createDropdownMovie() {
-    if (model.app.isOpenMovie == false) return `<div class="movieDropBtn" onclick="openDropdownMovie()"><img src="IMG/search.png" height = 80px></div>`;
+    if (model.app.isOpenMovie == false) return `<div class="movieDropBtn" onclick="openDropdownMovie()"><img src="IMG/movie.png" height = 70px></div>`;
     return `
     <div class="dropDownMovie">
     <div class="main">
