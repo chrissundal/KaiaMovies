@@ -13,7 +13,7 @@ function updateFriendView() {
            <h2>${selectedFriend.userName}</h2>
            <div><img src="${selectedFriend.userImage}" height="250px" width="400px"></div>
          </div>
-         <div>${selectedFriend.aboutme}</div>
+         <div class="aboutFriend">${selectedFriend.aboutme}</div>
          </div>
          <div class="friendGrid">
             <div class="favoriteLists">

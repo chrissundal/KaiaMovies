@@ -12,7 +12,7 @@ function updateProfilView() {
                 <h2>${model.data.users[model.input.profile.selectedUser].userName}<h2>
                 <div><img src="${model.data.users[model.input.profile.selectedUser].userImage}" height = 250px width = 400px></div>
               </div>
-              <div>${model.data.users[model.input.profile.selectedUser].aboutme}</div>
+              <div class="aboutFriend">${model.data.users[model.input.profile.selectedUser].aboutme}</div>
               </div>
               ${createSocial()}
     `;
