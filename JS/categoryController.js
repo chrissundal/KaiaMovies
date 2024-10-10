@@ -1,7 +1,11 @@
 function goCategory(){
-    model.app.currentPage = model.app.pages[2]
+    window.location.hash = "category";
+    navigateToCategory()
+}
+function navigateToCategory() {
+    model.app.currentPage = model.app.pages[2];
     model.app.isOpenMovie = false;
-    changeView()
+    changeView();
 }
 function sortMovies(criteria) {
     if (criteria === 'rating') {
