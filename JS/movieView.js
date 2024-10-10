@@ -4,9 +4,6 @@ function updateMovieView() {
     <div class="container">
         ${createHeader()}
         ${createDropdownMovie()}
-        <div class="homeIcon" onclick="goCategory()">
-            <img src="IMG/back.png" height = 80px>
-        </div>
         <div class="profileDropBtn" onclick="goProfile()"><img src="IMG/profile.png" height = 60px></div>
         ${createMovieInfo()}
         <div class="movieFullComment">

@@ -14,9 +14,6 @@ function updateCategoryView(){
         <div class="container">
         ${createHeader()}
         ${createDropdownMovie()}
-        <div class="homeIcon" onclick="goHomeButton()">
-            <img src="IMG/back.png" height = 80px>
-        </div>
         <div class="profileDropBtn" onclick="goProfile()"><img src="IMG/profile.png" height = 60px></div>
         </div>
         <div class="categorySort">
