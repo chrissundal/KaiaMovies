@@ -1,7 +1,11 @@
 function goSearch() {
-    model.app.currentPage = model.app.pages[1]
+    window.location.hash = "search";
+    navigateToSearch();
+}
+function navigateToSearch() {
+    model.app.currentPage = model.app.pages[1];
     model.app.isOpenMovie = false;
-    changeView()
+    changeView();
 }
 function searchPageResult() {
     const inputSearch = model.input.search.inputSearch;

@@ -1,4 +1,8 @@
 function goMovie(movieName){
+    window.location.hash = `#movie-${movieName}`;
+    navigateToMovie(movieName);
+}
+function navigateToMovie(movieName) {
     model.app.currentPage = model.app.pages[4];
     const selectedMovie = model.data.movies.find(movie => movie.name === movieName);
     if (selectedMovie) {
@@ -6,7 +10,7 @@ function goMovie(movieName){
     }
     model.input.mainPage.uniqueMovies = [];
     model.app.isOpenMovie = false;
-    updateMovieView();
+    changeView();
 }
 function sendMovieRating(){
     let inputRating = model.input.moviePage.inputRating;
