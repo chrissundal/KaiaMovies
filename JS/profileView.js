@@ -22,28 +22,30 @@ function createSocial(){
   let socialHtml = '';
   socialHtml = `
   <div class="friendsCommentsList">
+      <div class="addFriend">
+          <input type="text" placeholder="Add a friend" oninput="updateFriendInput(this)" />
+          <button onclick="addFriend(this.previousElementSibling)">Add Friend</button>
+      </div>
       <div class="friendSpace">
-          <h3>Friends</h3>
-          ${createFriendList()}
-          <div class="addFriend">
-              <input type="text" placeholder="Add a friend" oninput="updateFriendInput(this)" />
-              <button onclick="addFriend(this.previousElementSibling)">Add Friend</button>
-          </div>
+      <h3>Friends</h3>
+      ${createFriendList()}
+      </div>
+      </div>
+      <div class="favandwatch">
+      <div class="favoritesList">
+      <h3>Favorites</h3>
+      <div style="font:bold">
+      ${createFavoriteList()}
+      </div>
+      </div>
+      <div class="profileWatchList">
+      <h3>Filmer sett:</h3>
+      ${createWatchlist()}
       </div>
       <div class="earlierComments">
           <h3>Tidligere Kommentarer<h3>
           <div>${createComments()}</div>
       </div>
-  </div>
-      <div class="favoritesList">
-          <h3>Favorites</h3>
-          <div style="font:bold">
-              ${createFavoriteList()}
-          </div>
-      </div>
-      <div class="profileWatchList">
-        <h3>Filmer sett:</h3>
-        ${createWatchlist()}
       </div>
   `;
   return socialHtml;
@@ -70,7 +72,7 @@ function createFriendList() {
   for (let index = 0; index < currentUser.friends.length; index++) {
     let friendIndex = model.data.users.findIndex(user => user.userName === currentUser.friends[index]);
     html += /*HTML*/ `
-    <div onclick="goToFriend(${friendIndex})">
+    <div class="friendClick" onclick="goToFriend(${friendIndex})">
         ${currentUser.friends[index]}
     </div>
     `;

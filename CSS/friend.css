@@ -1,0 +1,50 @@
+.watchListProfileClick{
+    cursor: pointer;
+    margin: 5px;
+    transition: 0.4s ease;
+}
+.watchListProfileClick:hover{
+    transform: scale(1.05);
+    background-color: #ccc;
+    color: #333;
+}
+.favoriteFriendList{
+    cursor: pointer;
+    margin: 5px;
+    transition: 0.4s ease;
+}
+.favoriteFriendList:hover{
+    transform: scale(1.05);
+    background-color: #ccc;
+    color: #333;
+}
+.friendGrid{
+    display: flex;
+    flex-wrap: wrap;
+    gap: 30px;
+    margin: 20px;
+}
+.favoriteLists{
+    background-color: #333;
+    width: 300px;
+    text-align: center;
+    border-radius: 10px;
+    padding: 5px;
+    max-height: 400px;
+    overflow-y: auto;
+}
+.friendWatchList{
+    background-color: #333;
+    width: 300px;
+    text-align: center;
+    border-radius: 10px;
+    padding: 5px;
+    max-height: 400px;
+    overflow-y: auto;
+}
+.innerFriendComments{
+    text-align: center;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    margin: 5px;
+}

@@ -7,7 +7,6 @@ function updateFriendView() {
         ${createHeader()}
         ${createDropdownMovie()}
         <div class="profileDropBtn" onclick="goProfile()"><img src="IMG/profile.png" height = 60px></div>
-        <div>FriendPage</div>
         </div>
         <div class="userProfile">
          <div class="imageContainer">
@@ -16,6 +15,7 @@ function updateFriendView() {
          </div>
          <div>${selectedFriend.aboutme}</div>
          </div>
+         <div class="friendGrid">
             <div class="favoriteLists">
             <h3>Favorites</h3>
             <div>${createFavoriteListForFriend()}</div>
@@ -24,9 +24,15 @@ function updateFriendView() {
             <h3>Filmer sett</h3>
             <div>${createWatchlistForFriend()}</div>
         </div>
-        <div>${createCommentsFriend()}</div>
+        <div class="earlierComments">
+          <h3>Tidligere Kommentarer<h3>
+          ${createCommentsFriend()}
+        </div>
+        <div class="friendSpace">
         <h3>Venner</h3>
         ${createFriendListForFriend()}
+        </div>
+        </div>
         `;
         appDiv.innerHTML = friendPage;
 }
@@ -63,7 +69,7 @@ function createCommentsFriend(){
   let selectedFriend = model.data.users[model.input.profile.selectedFriend];
   for (let index = 0; index < model.data.users[model.input.profile.selectedFriend].comments.length; index++) {
     html += /*HTML*/ `
-      <div class="innerProfileComments">
+      <div class="innerFriendComments">
           ${selectedFriend.comments[index].movie}<br>
           ${selectedFriend.comments[index].rating}<br>
           ${selectedFriend.comments[index].comment}<br>
@@ -81,7 +87,7 @@ function createFriendListForFriend() {
     let friendIndex2 = model.data.users.findIndex(user => user.userName === selectedUser.friends[index]);
     
     html += /*HTML*/ `
-    <div onclick="goToFriend(${friendIndex2})">
+    <div class="friendClick" onclick="goToFriend(${friendIndex2})">
     ${selectedUser.friends[index]}</div>`;
   }
   return html;
