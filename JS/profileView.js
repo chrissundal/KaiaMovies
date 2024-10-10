@@ -9,7 +9,7 @@ function updateProfilView() {
     </div>
         <div class="userProfile">
               <div class="imageContainer">
-                <h2>${model.data.users[model.input.profile.selectedUser].userName}<h2>
+                <h2>${model.data.users[model.input.profile.selectedUser].userName}</h2>
                 <div><img src="${model.data.users[model.input.profile.selectedUser].userImage}" height = 250px width = 400px></div>
               </div>
               <div class="aboutFriend">${model.data.users[model.input.profile.selectedUser].aboutme}</div>
@@ -22,9 +22,19 @@ function createSocial(){
   let socialHtml = '';
   socialHtml = `
   <div class="friendsCommentsList">
+<<<<<<< Updated upstream
       <div class="addFriend">
           <input type="text" placeholder="Add a friend" oninput="updateFriendInput(this)" />
           <button onclick="addFriend(this.previousElementSibling)">Add Friend</button>
+=======
+      <div class="friendSpace">
+          <h3>Friends</h3>
+          ${createFriendList()}
+          <div class="addFriend">
+              <input type="text" placeholder="Add a friend"/>
+              <button onclick="addFriend(this.previousElementSibling)">Add Friend</button>
+          </div>
+>>>>>>> Stashed changes
       </div>
       <div class="favandwatch">
       <div class="favoritesList">
@@ -75,45 +85,39 @@ function createFriendList() {
     <div class="friendClick" onclick="goToFriend(${friendIndex})">
         ${currentUser.friends[index]}
     </div>
+    <button onclick="updateChatView(${friendIndex})">Chat</button>
     `;
+ 
   }
   return html;
 }
 
-let friendInputValue = "";
 let friendFound = false;
-
-function updateFriendInput(input) {
-  friendInputValue = input.value;
-}
-
 
 function addFriend(inputFriend) {
   let currentUser = model.data.users[model.input.profile.selectedUser];
-  if (friendInputValue == "") return;
+  if (inputFriend.value == "") return;
 
   if (
     currentUser.friends.includes(
-      friendInputValue
+      inputFriend.value
     )
   ) {
     inputFriend.value = "";
     inputFriend.placeholder = "This friend is already in your friend list.";
-    friendInputValue = "";
     return;
   }
 
   for (let index = 0; index < model.data.users.length; index++) {
-    if (friendInputValue == model.data.users[index].userName) {
+    if (inputFriend.value == model.data.users[index].userName) {
       friendFound = true;
 
-      currentUser.friends.push(friendInputValue);
+      currentUser.friends.push(inputFriend.value);
       model.data.users[index].friends.push(currentUser.userName);
       
       updateProfilView();
       inputFriend.value = "";
       inputFriend.placeholder = "Add friend";
-      friendInputValue = "";
 
       break;
     }
@@ -121,8 +125,8 @@ function addFriend(inputFriend) {
   if (!friendFound) {
     inputFriend.value = "";
     inputFriend.placeholder = "User not found";
-    friendInputValue = "";
   }
+  friendFound = false;
 }
 
 function createFavoriteList() {
@@ -139,7 +143,7 @@ function createFavoriteList() {
   return html;
 }
 function createWatchlist() {
-  let html = '';
+  let html = ''; 
   for (let i = model.data.users[model.input.profile.selectedUser].watchlist.length - 1; i >= 0; i--) {
     const movie = model.data.users[model.input.profile.selectedUser].watchlist[i];
     html += `
@@ -151,3 +155,4 @@ function createWatchlist() {
   }
   return html;
 }
+
