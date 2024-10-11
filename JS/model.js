@@ -26,7 +26,8 @@ const model = {
             watchlist: [],
             friends: [],
             favorites: [],
-            aboutme: null
+            aboutme: null,
+            chatMessage:[],
         },
         profile: {
             selectedUser: 0,
