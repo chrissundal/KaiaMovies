@@ -130,13 +130,15 @@
 .friendContainer{
     display: flex;
     flex-direction: row;
-    justify-content: baseline;
+    margin: 5px;
 }
 .friendContainer button {
     height: auto;
+    margin-left: 10px;
 }
 .friendClick {
     margin: 2px;
+    width: 200px;
     font-size: large;
     transition: 0.4s ease;
     cursor: pointer;
@@ -153,6 +155,7 @@
 .message {
     width: 380px;
     border: 1px solid #ccc;
+    border-radius: 10px;
 }
 .messageSection{
     display: flex;
@@ -176,4 +179,5 @@
     height: 25px;
     margin: 5px;
     font-size: large;
+    border-radius: 8px;
 }
