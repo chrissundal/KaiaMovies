@@ -77,7 +77,8 @@ function submitNewUser(){
                         watchlist: [],
                         friends: [],
                         favorites: [],
-                        aboutme: model.input.register.aboutme
+                        aboutme: model.input.register.aboutme,
+                        chatMessage:[],
                     }
                 );   
                 model.input.login.showLogin = `Registrering fullført`;
