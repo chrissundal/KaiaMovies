@@ -8,7 +8,7 @@ function navigateToSearch() {
     changeView();
 }
 function searchPageResult() {
-    const inputSearch = model.input.search.inputSearch;
+    let inputSearch = model.input.search.inputSearch;
     model.input.search.showSearch = searchMovies(inputSearch);
     if (model.input.search.showSearch.length == 0) {
         model.input.search.searchResults = `

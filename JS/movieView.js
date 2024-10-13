@@ -4,7 +4,6 @@ function updateMovieView() {
     <div class="container">
         ${createHeader()}
         ${createDropdownMovie()}
-        <div class="profileDropBtn" onclick="goProfile()"><img src="IMG/profile.png" height = 60px></div>
         ${createMovieInfo()}
         <div class="movieFullComment">
                 ${createMovieComments()}
@@ -16,11 +15,11 @@ function updateMovieView() {
         }
         function createMovieInfo() {
             let html = '';
-            const selectedMovie = model.data.movies[model.input.moviePage.selectedNumber];
+            let selectedMovie = model.data.movies[model.input.moviePage.selectedNumber];
             let numberOfRatings = selectedMovie.rating.length;
             html = `
             <div class="mainFullMovie">
-            <div class="movieFullHeader">${selectedMovie.name}</div>
+            <div class="movieFullHeader"><h1>${selectedMovie.name}</h1></div>
             <br>
             <img src="${selectedMovie.movieImage}" height = 400px width = 300px/>
             <br>
@@ -48,14 +47,15 @@ function updateMovieView() {
 }
 function createMovieComments() {
     let html = '';
+    let selectedMovie = model.data.movies[model.input.moviePage.selectedNumber]
     for (let comIndex = model.data.movies[model.input.moviePage.selectedNumber].comments.length -1; comIndex >= 0;  comIndex--) {
         if (model.data.users[model.input.profile.selectedUser].isAdmin) {
             html += `
             <div class="movieFullCommentFrame">
-            <div style="text-align: center;">${model.data.movies[model.input.moviePage.selectedNumber].comments[comIndex].userName} skrev:</div>
-            <div>${model.data.movies[model.input.moviePage.selectedNumber].comments[comIndex].comment}</div>
-            <div style="text-align: center; color: yellow">Rating: ${model.data.movies[model.input.moviePage.selectedNumber].comments[comIndex].rating} / 1000</div>
-            <div style="text-align: center; font-size: 10px">${model.data.movies[model.input.moviePage.selectedNumber].comments[comIndex].date}  ${model.data.movies[model.input.moviePage.selectedNumber].comments[comIndex].time}</div>
+            <div style="text-align: center;">${selectedMovie.comments[comIndex].userName} skrev:</div>
+            <div>${selectedMovie.comments[comIndex].comment}</div>
+            <div style="text-align: center; color: yellow">Rating: ${selectedMovie.comments[comIndex].rating} / 1000</div>
+            <div style="text-align: center; font-size: 10px">${selectedMovie.comments[comIndex].date}  ${selectedMovie.comments[comIndex].time}</div>
             <button onclick="deleteMovieRating(${comIndex})">Slett</button>
             <input type="number" placeholder="Endre rating... "onchange="changeMovieRating(this.valueAsNumber, ${comIndex})">
             </div>
@@ -63,10 +63,10 @@ function createMovieComments() {
         }else{
             html += `
             <div class="movieFullCommentFrame">
-            <div style="text-align: center;">${model.data.movies[model.input.moviePage.selectedNumber].comments[comIndex].userName} skrev:</div>
-            <div>${model.data.movies[model.input.moviePage.selectedNumber].comments[comIndex].comment}</div>
-            <div style="text-align: center; color: yellow">Rating: ${model.data.movies[model.input.moviePage.selectedNumber].comments[comIndex].rating} / 1000</div>
-            <div style="text-align: center; font-size: 10px">${model.data.movies[model.input.moviePage.selectedNumber].comments[comIndex].date}  ${model.data.movies[model.input.moviePage.selectedNumber].comments[comIndex].time}</div>
+            <div style="text-align: center;">${selectedMovie.comments[comIndex].userName} skrev:</div>
+            <div>${selectedMovie.comments[comIndex].comment}</div>
+            <div style="text-align: center; color: yellow">Rating: ${selectedMovie.comments[comIndex].rating} / 1000</div>
+            <div style="text-align: center; font-size: 10px">${selectedMovie.comments[comIndex].date}  ${model.data.movies[model.input.moviePage.selectedNumber].comments[comIndex].time}</div>
             </div>
             `;
         }

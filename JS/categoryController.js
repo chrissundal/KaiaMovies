@@ -30,7 +30,7 @@ function readFile(input) {
 }
 function submitNewMovie() {
     if (model.input.addMovies.name && model.input.addMovies.category && model.input.addMovies.movieImage && model.input.addMovies.actors && model.input.addMovies.director && model.input.addMovies.year && model.input.addMovies.rating && model.input.addMovies.description) {
-        const existingMovie = model.data.movies.find(movie => movie.name === model.input.addMovies.name);
+        let existingMovie = model.data.movies.find(movie => movie.name === model.input.addMovies.name);
         if (existingMovie) {
             model.input.login.showLogin = `Film er allerede lagt til`;
             addNewMovies();

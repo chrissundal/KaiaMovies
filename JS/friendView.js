@@ -1,46 +1,45 @@
+updateFriendView();
 function updateFriendView() {
  const selectedFriend = model.data.users[model.input.profile.selectedFriend];
-
-  appDiv.innerHTML = '';
  let friendPage = /*HTML*/ `
     <div class="container">
         ${createHeader()}
         ${createDropdownMovie()}
-        <div class="profileDropBtn" onclick="goProfile()"><img src="IMG/profile.png" height = 60px></div>
         </div>
         <div class="userProfile">
          <div class="imageContainer">
            <h2>${selectedFriend.userName}</h2>
            <div><img src="${selectedFriend.userImage}" height="250px" width="400px"></div>
          </div>
-         <div class="aboutFriend">${selectedFriend.aboutme}</div>
+         <div class="aboutFriend">
+         <h3>Om meg:</h3>
+         ${selectedFriend.aboutme}
          </div>
-         <div class="friendGrid">
+         <div class="friendSpace">
+         <h3>Venner:</h3>
+         ${createFriendListForFriend()}
+         </div>
+         </div>
+        <div class="friendGrid">
             <div class="favoriteLists">
-            <h3>Favorites</h3>
-            <div>${createFavoriteListForFriend()}</div>
+              <h3>Favoritter:</h3>
+              <div>${createFavoriteListForFriend()}</div>
             </div>
-        <div class="friendWatchList">
-            <h3>Filmer sett</h3>
-            <div>${createWatchlistForFriend()}</div>
-        </div>
-        <div class="earlierComments">
-          <h3>Tidligere Kommentarer<h3>
-          ${createCommentsFriend()}
-        </div>
-        <div class="friendSpace">
-        <h3>Venner</h3>
-        ${createFriendListForFriend()}
-        </div>
+            <div class="friendWatchList">
+                <h3>Filmer sett:</h3>
+                <div>${createWatchlistForFriend()}</div>
+            </div>
+            <div class="earlierComments">
+              <h3>Tidligere Kommentarer:<h3>
+              ${createCommentsFriend()}
+            </div>
         </div>
         `;
         appDiv.innerHTML = friendPage;
 }
 function createFavoriteListForFriend(){
   let favoriteListFriend = '';
-  
   let selectedFriend = model.data.users[model.input.profile.selectedFriend];
-
   for(let index = 0; index < selectedFriend.favorites.length; index++){
     const movie = selectedFriend.favorites[index];
     favoriteListFriend += /*HTML*/`
@@ -67,7 +66,7 @@ function createWatchlistForFriend(){
 function createCommentsFriend(){
   let html = "";
   let selectedFriend = model.data.users[model.input.profile.selectedFriend];
-  for (let index = 0; index < model.data.users[model.input.profile.selectedFriend].comments.length; index++) {
+  for (let index = selectedFriend.comments.length -1; index >= 0 ; index--) {
     html += /*HTML*/ `
       <div class="innerFriendComments">
           ${selectedFriend.comments[index].movie}<br>
@@ -85,9 +84,8 @@ function createFriendListForFriend() {
   let selectedUser = model.data.users[model.input.profile.selectedFriend];
   for (let index = 0; index < selectedUser.friends.length; index++) {
     let friendIndex2 = model.data.users.findIndex(user => user.userName === selectedUser.friends[index]);
-    
     html += /*HTML*/ `
-    <div class="friendClick" onclick="goToFriend(${friendIndex2})">
+    <div class="friendClickFriend" onclick="goToFriend(${friendIndex2})">
     ${selectedUser.friends[index]}</div>`;
   }
   return html;

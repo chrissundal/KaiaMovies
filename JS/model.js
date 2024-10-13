@@ -10,7 +10,7 @@ const model = {
             'loginPage',
             'friendPage'
         ],
-        currentPage: 'startPage',
+        currentPage: 'loginPage',
         isOpenMovie: false,
     },
     
@@ -33,7 +33,7 @@ const model = {
             selectedUser: 0,
             selectedFriend:0,
             profileBox: null,
-            showProfile: null,
+            showMessage: false,
         },
         login: {
             userId: '',

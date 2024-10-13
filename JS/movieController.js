@@ -4,7 +4,7 @@ function goMovie(movieName){
 }
 function navigateToMovie(movieName) {
     model.app.currentPage = model.app.pages[4];
-    const selectedMovie = model.data.movies.find(movie => movie.name === movieName);
+    let selectedMovie = model.data.movies.find(movie => movie.name === movieName);
     if (selectedMovie) {
         model.input.moviePage.selectedNumber = model.data.movies.indexOf(selectedMovie);
     }
@@ -16,22 +16,24 @@ function sendMovieRating(){
     let inputRating = model.input.moviePage.inputRating;
     let thisDate = new Date().toLocaleDateString()
     let thisTime = new Date().toLocaleTimeString()
-    model.data.movies[model.input.moviePage.selectedNumber].rating.push(inputRating)
+    let selectedUser = model.data.users[model.input.profile.selectedUser];
+    let selectedMovie = model.data.movies[model.input.moviePage.selectedNumber]
+    selectedMovie.rating.push(inputRating)
     let inputComment = model.input.moviePage.inputComment;
-    model.data.movies[model.input.moviePage.selectedNumber].comments.push(
+    selectedMovie.comments.push(
         {
         date: thisDate,
         time: thisTime,
-        userName: model.data.users[model.input.profile.selectedUser].userName,
+        userName: selectedUser.userName,
         comment: inputComment,
         rating: inputRating
         }
         )
-    model.data.users[model.input.profile.selectedUser].comments.push(
+        selectedUser.comments.push(
         {
         date: thisDate,
         time: thisTime,
-        movie: model.data.movies[model.input.moviePage.selectedNumber].name,
+        movie: selectedMovie.name,
         comment: inputComment,
         rating: inputRating
         }
@@ -42,23 +44,23 @@ function sendMovieRating(){
     updateMovieView();
 }
 function addToFavorite(selectedMovieName) {
-    const favIndex = model.data.users[model.input.profile.selectedUser].favorites.findIndex(movie => movie.name === selectedMovieName);
-    
+    let favIndex = model.data.users[model.input.profile.selectedUser].favorites.findIndex(movie => movie.name === selectedMovieName);
+    let selectedUser = model.data.users[model.input.profile.selectedUser];
     if (favIndex === -1) {
-        model.data.users[model.input.profile.selectedUser].favorites.push({ name: selectedMovieName });
+        selectedUser.favorites.push({ name: selectedMovieName });
     } else {
-        model.data.users[model.input.profile.selectedUser].favorites.splice(favIndex, 1);
+        selectedUser.favorites.splice(favIndex, 1);
     }
     updateMovieView();
 }
 
 function addToWatched(selectedMovieName) {
-    const watchIndex = model.data.users[model.input.profile.selectedUser].watchlist.findIndex(movie => movie.name === selectedMovieName);
-    
+    let watchIndex = model.data.users[model.input.profile.selectedUser].watchlist.findIndex(movie => movie.name === selectedMovieName);
+    let selectedUser = model.data.users[model.input.profile.selectedUser];
     if (watchIndex === -1) {
-        model.data.users[model.input.profile.selectedUser].watchlist.push({ name: selectedMovieName });
+        selectedUser.watchlist.push({ name: selectedMovieName });
     } else {
-        model.data.users[model.input.profile.selectedUser].watchlist.splice(watchIndex, 1);
+        selectedUser.watchlist.splice(watchIndex, 1);
     }
     updateMovieView();
 }
@@ -68,11 +70,13 @@ function inputMovieRating(text) {
 }
 
 function changeMovieRating(newRating, index) {
-    let userCommentIndex = model.data.users[model.input.profile.selectedUser].comments.findIndex(comment => comment.movie === model.data.movies[model.input.moviePage.selectedNumber].name && comment.comment === model.data.movies[model.input.moviePage.selectedNumber].comments[index].comment);
-    model.data.movies[model.input.moviePage.selectedNumber].rating[index] = newRating;
-    model.data.movies[model.input.moviePage.selectedNumber].comments[index].rating = newRating;
+    let selectedUser = model.data.users[model.input.profile.selectedUser]
+    let selectedMovie = model.data.movies[model.input.moviePage.selectedNumber]
+    let userCommentIndex = selectedUser.comments.findIndex(comment => comment.movie === selectedMovie.name && comment.comment === selectedMovie.comments[index].comment);
+    selectedMovie.rating[index] = newRating;
+    selectedMovie.comments[index].rating = newRating;
     if (userCommentIndex !== -1) {
-        model.data.users[model.input.profile.selectedUser].comments[userCommentIndex].rating = newRating;
+        selectedUser.comments[userCommentIndex].rating = newRating;
     }
     calculateRating();
     updateMovieView();
@@ -106,8 +110,8 @@ function checkFavorites() {
 }
 
 function checkWatched() {
-    const selectedMovieName = model.data.movies[model.input.moviePage.selectedNumber].name;
-    const isWatched = model.data.users[model.input.profile.selectedUser].watchlist.find(movie => movie.name === selectedMovieName);
+    let selectedMovieName = model.data.movies[model.input.moviePage.selectedNumber].name;
+    let isWatched = model.data.users[model.input.profile.selectedUser].watchlist.find(movie => movie.name === selectedMovieName);
     
     if (!isWatched) {
         return `<div class="movieFullIconwatch" onclick="addToWatched('${selectedMovieName}')">

@@ -4,7 +4,6 @@ function updateSearchView() {
     <div class="container">
         ${createHeader()}
         ${createDropdownMovie()}
-        <div class="profileDropBtn" onclick="goProfile()"><img src="IMG/profile.png" height = 60px></div>
     </div>
     <div class="input-container">
         <input type="text" placeholder="Søk etter filmer..." oninput="model.input.search.inputSearch=this.value">

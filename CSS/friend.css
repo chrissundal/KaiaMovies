@@ -11,6 +11,7 @@
 .favoriteFriendList{
     cursor: pointer;
     margin: 5px;
+    font-size: small;
     transition: 0.4s ease;
 }
 .favoriteFriendList:hover{
@@ -21,12 +22,13 @@
 .friendGrid{
     display: flex;
     flex-wrap: wrap;
-    gap: 30px;
-    margin: 20px;
+    gap: 20px;
+    margin: 10px;
 }
 .favoriteLists{
     background-color: #333;
     width: 300px;
+    font-size: small;
     text-align: center;
     border-radius: 10px;
     padding: 5px;
@@ -36,6 +38,7 @@
 .friendWatchList{
     background-color: #333;
     width: 300px;
+    font-size: small;
     text-align: center;
     border-radius: 10px;
     padding: 5px;
@@ -47,4 +50,15 @@
     border: 1px solid #ccc;
     border-radius: 10px;
     margin: 5px;
+}
+.friendClickFriend {
+    margin: 2px;
+    font-size: small;
+    transition: 0.4s ease;
+    cursor: pointer;
+}
+.friendClickFriend:hover {
+    transform: scale(1.05);
+    background-color: #ccc;
+    color: #333;
 }

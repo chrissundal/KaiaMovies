@@ -1,41 +1,57 @@
 updateProfilView();
 function updateProfilView() {
-  let selectedFriend = model.data.users[model.input.profile.selectedFriend]
+  let currentUser = model.data.users[model.input.profile.selectedUser];
   profilPage = /*HTML*/ `
     <div class="container">
         ${createHeader()}
         ${createDropdownMovie()}
-        <div class="profileDropBtn" onclick="goProfile()"><img src="IMG/profile.png" height = 60px></div>
     </div>
         <div class="userProfile">
               <div class="imageContainer">
-                <h2>${model.data.users[model.input.profile.selectedUser].userName}</h2>
-                <div><img src="${model.data.users[model.input.profile.selectedUser].userImage}" height = 250px width = 400px></div>
+                <h2>${currentUser.userName}</h2>
+                <div><img src="${currentUser.userImage}" height = 250px width = 400px></div>
               </div>
-              <div class="aboutFriend">${model.data.users[model.input.profile.selectedUser].aboutme}</div>
-              <div class="messageSection">
-                <h3>Messages with ${selectedFriend.userName}</h3>
-                ${showChatMessages()}
-                <input type="text" placeholder="Type your message here">
-                <button onclick="sendMessage(this.previousElementSibling)">Send Message</button>
-            </div>
+              <div class="aboutFriend">
+              <h3>Om meg:</h3>
+              ${currentUser.aboutme}
+              </div>
+              ${createChat()}
+            <div class="friendSpace">
+          <h3>Venner:</h3>
+          ${createFriendList()}
+        </div>
         </div>
               ${createSocial()}
     `;
   appDiv.innerHTML = profilPage;
 }
-function createSocial(){
+function createChat() {
+  let chatHtml = '';
+  if (model.input.profile.showMessage == false) return '';
+  chatHtml = `
+  <div class="messageSection">
+                <h3>Messages with ${model.data.users[model.input.profile.selectedFriend].userName}</h3>
+                ${showChatMessages()}
+                <input type="text" placeholder="Skriv melding her...">
+                <button onclick="sendMessage(this.previousElementSibling)">Send Melding</button>
+                <button onclick="closeMessage()">Lukk</button>
+            </div>
+  `;
+  return chatHtml;
+}
+
+function createSocial() {
   let socialHtml = '';
   socialHtml = `
   <div class="friendsCommentsList">
           <div class="addFriend">
-              <input type="text" placeholder="Add a friend"/>
-              <button onclick="addFriend(this.previousElementSibling)">Add Friend</button>
+              <input type="text" placeholder="Legg til venn"/>
+              <button onclick="addFriend(this.previousElementSibling)">Legg til</button>
           </div>
       </div>
       <div class="favandwatch">
         <div class="favoritesList">
-          <h3>Favorites</h3>
+          <h3>Favoritter:</h3>
           <div style="font:bold">
           ${createFavoriteList()}
           </div>
@@ -45,13 +61,10 @@ function createSocial(){
           ${createWatchlist()}
         </div>
         <div class="earlierComments">
-          <h3>Tidligere Kommentarer<h3>
+          <h3>Tidligere Kommentarer:<h3>
           <div>${createComments()}</div>
         </div>
-        <div class="friendSpace">
-          <h3>Friends</h3>
-          ${createFriendList()}
-        </div>
+        
       </div>
   </div>
   `;
@@ -60,7 +73,7 @@ function createSocial(){
 function createComments() {
   let html = "";
   let currentUser = model.data.users[model.input.profile.selectedUser];
-  for (let index = 0; index < model.data.users[model.input.profile.selectedUser].comments.length; index++) {
+  for (let index = currentUser.comments.length - 1; index >= 0; index--) {
     html += /*HTML*/ `
       <div class="innerProfileComments">
           <div>${currentUser.comments[index].movie}</div>   
@@ -86,114 +99,53 @@ function createFriendList() {
         <button onclick="selectChatFriend(${friendIndex})">Chat</button>
         </div>
     `;
- 
+
   }
   return html;
 }
-
-let friendFound = false;
-
-function addFriend(inputFriend) {
+function showChatMessages() {
   let currentUser = model.data.users[model.input.profile.selectedUser];
-  if (inputFriend.value == "") return;
-
-  if (
-    currentUser.friends.includes(
-      inputFriend.value
-    )
-  ) {
-    inputFriend.value = "";
-    inputFriend.placeholder = "This friend is already in your friend list.";
-    return;
-  }
-
-  for (let index = 0; index < model.data.users.length; index++) {
-    if (inputFriend.value == model.data.users[index].userName) {
-      friendFound = true;
-
-      currentUser.friends.push(inputFriend.value);
-      model.data.users[index].friends.push(currentUser.userName);
-      
-      updateProfilView();
-      inputFriend.value = "";
-      inputFriend.placeholder = "Add friend";
-
-      break;
-    }
-  }
-  if (!friendFound) {
-    inputFriend.value = "";
-    inputFriend.placeholder = "User not found";
-  }
-  friendFound = false;
+  let selectedFriend = model.data.users[model.input.profile.selectedFriend];
+  let messageHtml = '';
+  let messages = model.data.chatConversations.filter(message =>
+    (message.sender === currentUser.userName && message.recipient === selectedFriend.userName) ||
+    (message.sender === selectedFriend.userName && message.recipient === currentUser.userName)
+  );
+  messages.forEach(message => {
+    messageHtml += /*HTML*/ `
+              <div class="message">
+                  <strong>${message.sender}:</strong> ${message.message} <br>
+                  ${message.timestamp}
+      </div>
+      `;
+  });
+  return messageHtml;
 }
-
 function createFavoriteList() {
   let html = "";
-  for (let favindex = 0; favindex < model.data.users[model.input.profile.selectedUser].favorites.length; favindex++) {
-    const movie = model.data.users[model.input.profile.selectedUser].favorites[favindex];
+  let currentUser = model.data.users[model.input.profile.selectedUser];
+  for (let favindex = 0; favindex < currentUser.favorites.length; favindex++) {
+    const movie = currentUser.favorites[favindex];
     html += /*HTML*/ `
     
     <div class="favoriteProfileClick" onclick="goMovie('${movie.name}')">
-        ${model.data.users[model.input.profile.selectedUser].favorites[favindex].name}
+        ${currentUser.favorites[favindex].name}
     </div>
     `;
   }
   return html;
 }
 function createWatchlist() {
-  let html = ''; 
-  for (let i = model.data.users[model.input.profile.selectedUser].watchlist.length - 1; i >= 0; i--) {
-    const movie = model.data.users[model.input.profile.selectedUser].watchlist[i];
+  let html = '';
+  let currentUser = model.data.users[model.input.profile.selectedUser];
+  for (let i = currentUser.watchlist.length - 1; i >= 0; i--) {
+    const movie = currentUser.watchlist[i];
     html += `
       <div class="watchListProfileClick" onclick="goMovie('${movie.name}')">
-      ${model.data.users[model.input.profile.selectedUser].watchlist[i].name}
+      ${currentUser.watchlist[i].name}
       </div>
     
     `;
   }
   return html;
-}
-function showChatMessages(){
-  let currentUser = model.data.users[model.input.profile.selectedUser];
-  let selectedFriend = model.data.users[model.input.profile.selectedFriend];
-  let messageHtml = '';
-  let messages = model.data.chatConversations.filter(message => 
-      (message.sender === currentUser.userName && message.recipient === selectedFriend.userName) ||
-      (message.sender === selectedFriend.userName && message.recipient === currentUser.userName)
-  );
-  messages.forEach(message => {
-          messageHtml += /*HTML*/ `
-              <div class="message">
-                  <strong>${message.sender}:</strong> ${message.message} <br>
-                  ${message.timestamp}
-      </div>
-      `;
-      });
-      return messageHtml;
-}
-function selectChatFriend(friendIndex){
-  
-  model.input.profile.selectedFriend = friendIndex;
-  updateProfilView();
-}
-function sendMessage(messageInput){
-  let currentUser = model.data.users[model.input.profile.selectedUser];
-  let selectedFriend = model.data.users[model.input.profile.selectedFriend];
-
-  let messageText = messageInput.value;
-  if (messageText == '') return;
-  
-  let timestamp = new Date().toLocaleString()
-  let message = {
-      sender: currentUser.userName,
-      recipient: selectedFriend.userName,
-      message: messageText,
-      timestamp: timestamp,
-  }
-
-  model.data.chatConversations.push(message);
-
-  messageInput.value = '';
- updateProfilView()
 }

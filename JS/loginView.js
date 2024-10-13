@@ -21,24 +21,6 @@ function updateLoginView(){
     appDiv.innerHTML = loginPage;
 }
 
-function getUserNamePassword(){
-    const inputUserName = model.input.login.userName;
-    const inputPassword = model.input.login.password;
-    const user = searchUserLogin(inputUserName, inputPassword);
-    if (user) {
-        model.input.profile.selectedUser = user.userId;
-        model.input.login.showLogin = '';
-        goHomeButton();
-    } else {
-        model.input.login.showLogin = `Feil brukernavn eller passord`;
-        updateLoginView();
-    }
-}
-function searchUserLogin(inputUserName, inputPassword) {
-    return model.data.users.find(user => {
-        return user.userName === inputUserName && user.password === inputPassword;
-    });
-}
 function registerNewUser(){
     const loginPage = `
     <div class="container">
@@ -57,56 +39,4 @@ function registerNewUser(){
     </div>
     `;
     appDiv.innerHTML = loginPage;
-}
-
-function submitNewUser(){
-    if(model.input.register.userName && model.input.register.password && model.input.register.userImage && model.input.register.aboutme && model.input.register.secondpassword) {
-        const existingUser = model.data.users.find(user => user.userName === model.input.register.userName);
-        if (!existingUser) {
-            if (model.input.register.password === model.input.register.secondpassword) {
-                const newUserId = model.data.users.length;
-                model.data.users.push(
-                    {
-                        userId: newUserId,
-                        userName: model.input.register.userName,
-                        password: model.input.register.password,
-                        userImage: model.input.register.userImage,
-                        comments: [],
-                        isAdmin: false,
-                        friendComments: [],
-                        watchlist: [],
-                        friends: [],
-                        favorites: [],
-                        aboutme: model.input.register.aboutme,
-                        chatMessage:[],
-                    }
-                );   
-                model.input.login.showLogin = `Registrering fullført`;
-                updateLoginView();
-            }else{
-                model.input.login.showLogin = `Passord ikke likt`;
-                registerNewUser();
-            }
-        }else{
-            model.input.login.showLogin = `Brukernavn allerede tatt`;
-            registerNewUser();
-        }
-    }else{
-        model.input.login.showLogin = `Alle felter må fylles ut`;
-        registerNewUser();
-    }
-}
-function cancelNewUser() {
-    model.input.login.showLogin = '';
-    updateLoginView()
-}
-function readFileLogin(input) {
-    const file = input.files[0];
-    if (file) {
-        const reader = new FileReader();
-        reader.onload = function(event) {
-            model.input.register.userImage = event.target.result;
-        }
-        reader.readAsDataURL(file);
-    }
 }

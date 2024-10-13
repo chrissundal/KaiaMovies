@@ -5,7 +5,7 @@
 }
 .loginBox {
     display: flex;
-background-color: #333333cc;
+    background-color: #333;
     flex-direction: column;
     margin: 10px;
     gap: 10px;
@@ -13,10 +13,16 @@ background-color: #333333cc;
     margin-top: 300px;
     padding: 20px;
     border-radius: 10px;
-
+    font-size: large;
 }
 .loginBox button {
     width: auto;
+    background-color: #333;
+    color: #ccc;
+}
+.loginBox button:hover {
+    background-color: #ccc;
+    color: #333;
 }
 .loginBox input {
     font-size: larger;
