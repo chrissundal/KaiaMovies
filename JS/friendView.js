@@ -1,7 +1,7 @@
 updateFriendView();
 function updateFriendView() {
- const selectedFriend = model.data.users[model.input.profile.selectedFriend];
- let friendPage = /*HTML*/ `
+  const selectedFriend = model.data.users[model.input.profile.selectedFriend];
+  let friendPage = /*HTML*/ `
     <div class="container">
         ${createHeader()}
         ${createDropdownMovie()}
@@ -35,12 +35,12 @@ function updateFriendView() {
             </div>
         </div>
         `;
-        appDiv.innerHTML = friendPage;
+  appDiv.innerHTML = friendPage;
 }
-function createFavoriteListForFriend(){
+function createFavoriteListForFriend() {
   let favoriteListFriend = '';
   let selectedFriend = model.data.users[model.input.profile.selectedFriend];
-  for(let index = 0; index < selectedFriend.favorites.length; index++){
+  for (let index = 0; index < selectedFriend.favorites.length; index++) {
     const movie = selectedFriend.favorites[index];
     favoriteListFriend += /*HTML*/`
     <div class="favoriteFriendList" onclick="goMovie('${movie.name}')">
@@ -50,10 +50,10 @@ function createFavoriteListForFriend(){
   return favoriteListFriend;
 }
 
-function createWatchlistForFriend(){
+function createWatchlistForFriend() {
   let watchlistFriend = '';
   let selectedFriend = model.data.users[model.input.profile.selectedFriend];
-  for(let index = selectedFriend.watchlist.length -1; index >= 0;index--){
+  for (let index = selectedFriend.watchlist.length - 1; index >= 0; index--) {
     const movie = selectedFriend.watchlist[index];
     watchlistFriend += /*HTML*/ `
     <div class="watchListProfileClick" onclick="goMovie('${movie.name}')">
@@ -63,10 +63,10 @@ function createWatchlistForFriend(){
   return watchlistFriend;
 }
 
-function createCommentsFriend(){
+function createCommentsFriend() {
   let html = "";
   let selectedFriend = model.data.users[model.input.profile.selectedFriend];
-  for (let index = selectedFriend.comments.length -1; index >= 0 ; index--) {
+  for (let index = selectedFriend.comments.length - 1; index >= 0; index--) {
     html += /*HTML*/ `
       <div class="innerFriendComments">
           ${selectedFriend.comments[index].movie}<br>
