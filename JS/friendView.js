@@ -30,7 +30,7 @@ function updateFriendView() {
                 <div>${createWatchlistForFriend()}</div>
             </div>
             <div class="earlierComments">
-              <h3>Tidligere Kommentarer:<h3>
+              <h3>Tidligere Kommentarer:</h3>
               ${createCommentsFriend()}
             </div>
         </div>

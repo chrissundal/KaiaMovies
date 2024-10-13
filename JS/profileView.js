@@ -61,7 +61,7 @@ function createSocial() {
           ${createWatchlist()}
         </div>
         <div class="earlierComments">
-          <h3>Tidligere Kommentarer:<h3>
+          <h3>Tidligere Kommentarer:</h3>
           <div>${createComments()}</div>
         </div>
         
