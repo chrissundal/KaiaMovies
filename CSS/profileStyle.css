@@ -106,7 +106,7 @@
 }
 .addFriend input {
     position: relative;
-    top: 2px;
+    top: 0px;
     height: 24px;
     width: 180px;
     border-radius: 10px 0 0 10px;
