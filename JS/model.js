@@ -83,7 +83,7 @@ const model = {
                 userId: 0,
                 userName: "Chris",
                 password: "chris123",
-                userImage: "/IMG/users/chris.jpg",
+                userImage: "IMG/users/chris.jpg",
                 comments: [
                     {
                         date: "28.9.2024",
@@ -105,7 +105,7 @@ const model = {
                 userId: 1,
                 userName: "FilmFan16",
                 password: "film123",
-                userImage: "/IMG/users/filmfan16.jpg",
+                userImage: "IMG/users/filmfan16.jpg",
                 comments: [],
                 isAdmin: false,
                 friendComments: [],
@@ -119,7 +119,7 @@ const model = {
                 userId: 2,
                 userName: "Nico",
                 password: "nico123",
-                userImage: "/IMG/users/nico.png",
+                userImage: "IMG/users/nico.png",
                 comments: [{
                     comment: "Det var en god en",
                     date: "29.9.2024",

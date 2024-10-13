@@ -180,13 +180,13 @@ button:hover {
 }
 @font-face {
     font-family: 'Agent Orange';
-    src: url('/Font/AgentOrange.eot');
+    src: url('Font/AgentOrange.eot');
     src: local('Agent Orange'), local('AgentOrange'),
-        url('/Font/AgentOrange.eot?#iefix') format('embedded-opentype'),
-        url('/Font/AgentOrange.woff2') format('woff2'),
-        url('/Font/AgentOrange.woff') format('woff'),
-        url('/Font/AgentOrange.ttf') format('truetype'),
-        url('/Font/AgentOrange.svg#AgentOrange') format('svg');
+        url('Font/AgentOrange.eot?#iefix') format('embedded-opentype'),
+        url('Font/AgentOrange.woff2') format('woff2'),
+        url('Font/AgentOrange.woff') format('woff'),
+        url('Font/AgentOrange.ttf') format('truetype'),
+        url('Font/AgentOrange.svg#AgentOrange') format('svg');
     font-weight: normal;
     font-style: normal;
     font-display: swap;
